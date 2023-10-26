@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "devStart": "nodemon ./bin/www",
+    "dev": "set DEBUG=chem-store-inventory:* & npm run devStart"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
