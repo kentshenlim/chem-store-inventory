@@ -11,6 +11,7 @@
   "rules": {
     "linebreak-style": "off",
     "no-underscore-dangle": "off",
-    "func-names": "off"
+    "func-names": "off",
+    "no-unused-vars": "off"
   }
 }
