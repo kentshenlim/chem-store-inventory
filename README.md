@@ -18,6 +18,10 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: schema plan
+- TODO: schema writing
+- TODO: MongoDB setup
+- TODO: DB init file
 - TODO: set up Tailwind
+- TODO: views and controllers
+- TODO: homepage
 - TODO: upload SDS
