@@ -23,5 +23,5 @@ Mobile-first inventory app written to practice DB manipulation.
 - TODO: DB init file
 - TODO: set up Tailwind
 - TODO: views and controllers
-- TODO: homepage
+- TODO: homepage, with latest arrivals
 - TODO: upload SDS
