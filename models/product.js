@@ -9,7 +9,7 @@ const productSchema = new Schema({
     ref: 'Chemical',
     required: true,
   },
-  productNo: {
+  sku: {
     type: String,
     required: true,
     maxLength: [20, 'productNo cannot have more than 20 characters'],

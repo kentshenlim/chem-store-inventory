@@ -22,11 +22,11 @@ const chemicalSchema = new Schema({
     required: true,
     min: [0, 'Molecular weight cannot be negative'],
   },
-  group: {
+  groups: [{
     type: Schema.Types.ObjectId,
     ref: 'Group',
     required: true,
-  },
+  }],
 });
 
 // Virtuals
