@@ -445,11 +445,6 @@ h1,
   font-weight: 600;
 }
 
-a {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -566,6 +561,16 @@ a {
   display: block;
 }
 
+.columns-2 {
+  -moz-columns: 2;
+       columns: 2;
+}
+
+.columns-3 {
+  -moz-columns: 3;
+       columns: 3;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }
@@ -574,14 +579,49 @@ a {
   border-width: 1px;
 }
 
-.border-red-300 {
+.border-red-500 {
   --tw-border-opacity: 1;
-  border-color: rgb(252 165 165 / var(--tw-border-opacity));
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .bg-slate-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+
+.bg-green-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+
+.bg-orange-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
+}
+
+.bg-violet-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(167 139 250 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 
 .p-3 {
@@ -604,6 +644,10 @@ a {
 
 .pl-3 {
   padding-left: 0.75rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-lg {
@@ -629,6 +673,13 @@ a {
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
+@media (min-width: 768px) {
+  .md\:columns-3 {
+    -moz-columns: 3;
+         columns: 3;
+  }
+}
+
 .\[\&\:not\(\:first-child\)\]\:mt-2:not(:first-child) {
   margin-top: 0.5rem;
 }
@@ -639,4 +690,23 @@ a {
 
 .\[\&\>li\]\:list-disc>li {
   list-style-type: disc;
+}
+
+.\[\&\>li\]\:break-inside-avoid>li {
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+}
+
+.\[\&_a\]\:text-blue-500 a {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.\[\&_h3\]\:text-center h3 {
+  text-align: center;
+}
+
+.\[\&_img\]\:mx-auto img {
+  margin-left: auto;
+  margin-right: auto;
 }

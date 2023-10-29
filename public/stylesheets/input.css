@@ -10,7 +10,4 @@
   h2 {
     @apply font-semibold;
   }
-  a {
-    @apply text-blue-500;
-  }
 }

@@ -18,10 +18,10 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: set up Tailwind
+- TODO: add copyright at bottom
+- TODO: responsive, and might need to reduce repetition in Tailwind
 - TODO: views and controllers
 - TODO: casings, store all in small case, then capitalize?
-- TODO: homepage, with latest arrivals
 - TODO: sidebar hidden at LHS at mobile, expand at wide screen
 - TODO: disallow deletion for sample data
 - TODO: upload SDS

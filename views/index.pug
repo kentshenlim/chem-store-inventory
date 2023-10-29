@@ -4,11 +4,12 @@ block content
   section 
     div
       h1(class='text-xl')= title
+
   section
     div
       p Welcome to #{title}.
       p The inventory has the following record counts:
-      ul(class='[&>li]:list-disc [&>li]:list-inside pl-2') 
+      ul(class='[&>li]:list-disc [&>li]:list-inside pl-2 [&_a]:text-blue-500') 
         li 
           a(href='/product') #[Strong Products]:
           |  !{productCount}
@@ -18,6 +19,36 @@ block content
         li
           a(href='/group') #[Strong Functional groups]:
           |  !{groupCount}
+
+  section
+    div
+      h2(class='uppercase text-lg') quick navigation
+      ul(class='p-3 columns-2 [&>li]:break-inside-avoid [&_h3]:text-center [&_img]:mx-auto')
+        li(class='bg-red-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative ')
+          a(href='/group')
+            img(src='/images/allGroups.png', alt='Icon for All Groups button')
+            h3 All Groups
+        li(class='bg-orange-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
+          a(href='/chemical')
+            img(src='/images/allChemicals.png', alt='Icon for All Chemicals button')
+            h3 All Chemicals
+        li(class='bg-yellow-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
+          a(href='/product')
+            img(src='/images/allProducts.png', alt='Icon for All Products button')
+            h3 All Products
+        li(class='bg-green-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative ')
+          a(href='/group/create')
+            img(src='/images/createGroup.png', alt='Icon for Create Group button')
+            h3 Create Group
+        li(class='bg-blue-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
+          a(href='/chemical/create')
+            img(src='/images/createChemical.png', alt='Icon for Create Chemical button')
+            h3 Create Chemical
+        li(class='bg-violet-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
+          a(href='group/create')
+            img(src='/images/createProduct.png' alt='Icon for Create Product button')
+            h3 Create Product
+
   section
     div
       h2(class='uppercase text-lg') recently added
