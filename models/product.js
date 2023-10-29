@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 
 const { Schema } = mongoose;
 
@@ -41,6 +42,10 @@ const productSchema = new Schema({
 // Virtuals
 productSchema.virtual('url').get(function () {
   return `/product/${this._id}`;
+});
+
+productSchema.virtual('addedAgo').get(function () {
+  return formatDistanceToNow(this.added);
 });
 
 module.exports = mongoose.model('Product', productSchema);

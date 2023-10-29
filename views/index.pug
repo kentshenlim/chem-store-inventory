@@ -1,9 +1,33 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p Functional group count: !{groupCount}
-  p Chemical count: !{chemicalCount}
-  p Product count: !{productCount}
+  section 
+    div
+      h1(class='text-xl')= title
+  section
+    div
+      p Welcome to #{title}.
+      p The inventory has the following record counts:
+      ul(class='[&>li]:list-disc [&>li]:list-inside pl-2') 
+        li 
+          a(href='/product') #[Strong Products]:
+          |  !{productCount}
+        li
+          a(href='/chemical') #[Strong Chemicals]:
+          |  !{chemicalCount}
+        li
+          a(href='/group') #[Strong Functional groups]:
+          |  !{groupCount}
+  section
+    div
+      h2(class='uppercase text-lg') recently added
+      ul(class='p-3')
+        each product in recentProducts
+          li(class='bg-slate-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
+            h3(class='pl-2 capitalize') #{product.chemical.name}
+            p(class='pl-3') SKU: #{product.sku}
+            p(class='pl-3') Added #{product.addedAgo} ago
+            a(href='/product/' + product._id class='absolute inset-0')
+            
+
 
