@@ -646,6 +646,10 @@ h3 {
   display: inline-flex;
 }
 
+.list-item {
+  display: list-item;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -846,6 +850,16 @@ for page section title.
 [7] Must include cases for zero-length array
 */
 
+.\[\&\&\>p\]\:px-3.\[\&\&\>p\]\:px-3>p {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.\[\&\+\*\]\:indent+* {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .\[\&\:not\(\:first-child\)\]\:mt-2:not(:first-child) {
   margin-top: 0.5rem;
 }
@@ -854,9 +868,24 @@ for page section title.
   margin-top: 0.75rem;
 }
 
+.\[\&\>\*\]\:px-3>* {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.\[\&\>\*\]\:indent>* {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .\[\&\>\:not\(\:first-child\)\]\:px-2>:not(:first-child) {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.\[\&\>div\]\:indent>div {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .\[\&\>li\]\:list-inside>li {
@@ -872,11 +901,36 @@ for page section title.
        break-inside: avoid;
 }
 
+.\[\&\>p\]\:px-3>p {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.\[\&_\*\]\:px-3 * {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .\[\&_img\]\:mx-auto img {
   margin-left: auto;
   margin-right: auto;
 }
 
+.\[\&_p\]\:px-3 p {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .\[\&_p\]\:text-center p {
   text-align: center;
+}
+
+.\[\&\~\*\]\:indent~* {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.\[\&\~\]\:indent~ {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }

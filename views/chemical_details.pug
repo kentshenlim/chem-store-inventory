@@ -3,12 +3,13 @@ extends layout
 block content
     section
         div(class='flex justify-between') 
-            a(href='/chemical' class='text-link-color') &#128896; Back
+            a(href='/chemical' class='text-link-color') &#128896; List
+            a(href='/' class='text-link-color') Home
             a(href='/chemical/' + chemical._id + '/update' class='text-link-color') Edit &#128898;
     
     section
         div
-            h2(class='text-lg uppercase') #{chemical.name}
+            h3(class='[&~*]:indent') #{chemical.name}
             p Chemical formula: !{chemical.formulaFormatted}
             p CAS no.: #{chemical.casNo}
             p MW (kg mol
@@ -17,22 +18,22 @@ block content
 
     section
         div
-            h2(class='text-lg uppercase') Functional Groups
+            h3 Functional Groups
             if (chemical.groups.length) 
-                ul
-                each group in chemical.groups
-                    li
-                        a(href='/group/' + group._id class='capitalize text-link-color') #{group.name}
+                ul(class='indent')
+                    each group in chemical.groups
+                        li(class='list-disc list-inside')
+                            a(href='/group/' + group._id class='capitalize text-link-color') #{group.name}
             else
                 p This chemical does not possess any functional group in record.
 
     section
         div
-            h2(class='text-lg uppercase') Products
+            h3 Products
             if (chemicalProducts && chemicalProducts.length)
-                ul
-                each product in chemicalProducts
-                    li
-                        a(href='/product/' + product._id class='text-link-color') #{product.sku}
+                ul(class='indent')
+                    each product in chemicalProducts
+                        li(class='list-disc list-inside')
+                            a(href='/product/' + product._id class='text-link-color') #{product.sku}
             else
                 p No product of this chemical exists in the record.
