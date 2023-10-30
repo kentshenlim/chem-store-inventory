@@ -24,27 +24,27 @@ block content
     div
       h2(class='text-lg uppercase') quick navigation
       ul(class='p-3 columns-2 [&>li]:break-inside-avoid [&_h3]:text-center [&_img]:mx-auto')
-        li(class='bg-red-400 navigatorButton')
+        li(class='bg-red-300 navigatorButton')
           a(href='/group')
             img(src='/images/allGroups.png', alt='Icon for All Groups button')
             h3 All Groups
-        li(class='bg-orange-400 navigatorButton')
+        li(class='bg-orange-300 navigatorButton')
           a(href='/chemical')
             img(src='/images/allChemicals.png', alt='Icon for All Chemicals button')
             h3 All Chemicals
-        li(class='bg-yellow-400 navigatorButton')
+        li(class='bg-yellow-300 navigatorButton')
           a(href='/product')
             img(src='/images/allProducts.png', alt='Icon for All Products button')
             h3 All Products
-        li(class='bg-green-400 navigatorButton')
+        li(class='bg-green-300 navigatorButton')
           a(href='/group/create')
             img(src='/images/createGroup.png', alt='Icon for Create Group button')
             h3 Create Group
-        li(class='bg-blue-400 navigatorButton')
+        li(class='bg-blue-300 navigatorButton')
           a(href='/chemical/create')
             img(src='/images/createChemical.png', alt='Icon for Create Chemical button')
             h3 Create Chemical
-        li(class='bg-violet-400 navigatorButton')
+        li(class='bg-violet-300 navigatorButton')
           a(href='group/create')
             img(src='/images/createProduct.png' alt='Icon for Create Product button')
             h3 Create Product
@@ -54,7 +54,7 @@ block content
       h2(class='text-lg uppercase') recently added
       ul(class='p-3')
         each product in recentProducts
-          li(class='bg-slate-400 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
+          li(class='bg-slate-300 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
             h3(class='pl-2 capitalize') #{product.chemical.name}
             p(class='pl-3') SKU: #{product.sku}
             p(class='pl-3') Added #{product.addedAgo} ago
