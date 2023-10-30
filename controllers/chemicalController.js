@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Chemical = require('../models/chemical');
+const Product = require('../models/product');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
@@ -11,7 +12,21 @@ module.exports = {
   }),
 
   details_get: asyncHandler(async (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: GET chemical detail for id ${req.params.id}`);
+    const [chemical, chemicalProducts] = await Promise.all([
+      Chemical.findById(req.params.id).populate('groups').exec(),
+      Product.find({ chemical: req.params.id }).exec(),
+    ]);
+    if (!chemical) {
+      const err = new Error('Chemical ID Not Found');
+      err.status = 404;
+      next(err);
+    }
+    const chemicalName = chemical.name.toUpperCase();
+    res.render('chemical_details', {
+      title: `Chemical: ${chemicalName}`,
+      chemical,
+      chemicalProducts,
+    });
   }),
 
   create_get: asyncHandler(async (req, res, next) => {
