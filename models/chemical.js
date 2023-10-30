@@ -34,4 +34,9 @@ chemicalSchema.virtual('url').get(function () {
   return `/chemical/${this._id}`;
 });
 
+chemicalSchema.virtual('formulaFormatted').get(function () {
+  const str = this.formula.replace(/(\d+)/g, '<sub>$1</sub>');
+  return str;
+});
+
 module.exports = mongoose.model('Chemical', chemicalSchema);

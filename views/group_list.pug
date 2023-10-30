@@ -7,15 +7,18 @@ block content
             a(href='/group/create' class='text-link-color') Create &#128898;
     section 
         div 
-            ul
-            each group in allGroups
-                li(class='list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border px-3 py-2 border-transparent border-b-slate-400')
-                    h2(class='capitalize') #{group.name}
-                    p(class='line-clamp-3') #{group.description}
-                    a(href='/group/' + group._id class='t' class='text-link-color') Inspect
-                    a(href=group.wikiUrl target='_blank' class='inline-flex items-center self-end gap-1 text-right text-link-color')
-                        img(src='/images/externalLink.svg', alt="External link icon" class='inline')
-                        | #[em Wiki ]
+            if (allGroups && allGroups.length)
+                ul
+                each group in allGroups
+                    li.listItem
+                        h2(class='capitalize') #{group.name}
+                        p(class='line-clamp-3') #{group.description}
+                        a(href='/group/' + group._id class='t' class='text-link-color') Inspect
+                        a(href=group.wikiUrl target='_blank' class='inline-flex items-center self-end gap-1 text-right text-link-color')
+                            img(src='/images/externalLink.svg', alt="External link icon" class='inline')
+                            | #[em Wiki ]
+            else 
+                p Oops, it seems like the record is empty. Please create one to add to it.
 
 
 

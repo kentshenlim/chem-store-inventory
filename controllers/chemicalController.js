@@ -1,8 +1,13 @@
 const asyncHandler = require('express-async-handler');
+const Chemical = require('../models/chemical');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET chemical list');
+    const allChemicals = await Chemical.find({}, { groups: 0 }).sort({ name: 1 }).populate('groups').exec();
+    res.render('chemical_list', {
+      title: 'All Chemicals',
+      allChemicals,
+    });
   }),
 
   details_get: asyncHandler(async (req, res, next) => {

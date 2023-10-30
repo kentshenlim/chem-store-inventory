@@ -50,7 +50,7 @@ block content
       h2(class='text-lg uppercase') recently added
       ul(class='p-3')
         each product in recentProducts
-          li(class='bg-slate-300 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative')
+          li(class='bg-slate-300 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover-color relative')
             h3(class='pl-2 capitalize') #{product.chemical.name}
             p(class='pl-3') SKU: #{product.sku}
             p(class='pl-3') Added #{product.addedAgo} ago

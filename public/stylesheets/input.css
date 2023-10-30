@@ -16,10 +16,16 @@
   .navigatorButton {
     @apply px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative;
   }
+  .listItem {
+    @apply list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border px-3 py-2 border-transparent border-b-slate-400;
+  }
 }
 
 @layer utilities {
   .text-link-color {
     @apply text-blue-500;
+  }
+  .hover-color {
+    @apply hover:bg-slate-200;
   }
 }
