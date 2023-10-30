@@ -10,6 +10,12 @@
   h2 {
     @apply font-semibold;
   }
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
 }
 
 @layer components {

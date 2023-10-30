@@ -4,14 +4,18 @@ html(class='bg-slate-50')
     title= title
     link(rel='stylesheet', href='/stylesheets/output.css')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  body
+  body(class='flex flex-col min-h-screen')
+    section
+      div
+        h1 ChemStore
+        
     section 
       div
-        h1(class='text-xl')= title
+        h2= title
 
     block content
 
-    section 
+    section(class='mt-auto') 
       div(class='text-center bg-violet-300') 
         a(href='https://github.com/kentshenlim/chem-store-inventory' target='_blank')
           span(class='font-bold') &copy;
