@@ -7,7 +7,8 @@
     @apply p-4 pt-2 pb-2;
   }
   h1,
-  h2 {
+  h2,
+  h3 {
     @apply font-semibold;
   }
   h1 {
@@ -16,11 +17,14 @@
   h2 {
     @apply text-xl;
   }
+  h3 {
+    @apply mb-3 text-lg uppercase;
+  }
 }
 
 @layer components {
   .navigatorButton {
-    @apply px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative;
+    @apply px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md relative;
   }
   .listItem {
     @apply list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border px-3 py-2 border-transparent border-b-slate-400 [&>:not(:first-child)]:px-1;
@@ -31,7 +35,20 @@
   .text-link-color {
     @apply text-blue-500;
   }
-  .hover-color {
+  .bg-hover-color {
     @apply hover:bg-slate-200;
   }
+  .indent {
+    @apply px-3;
+  }
 }
+/*
+Rules on HTML structure
+[1] Only three levels of headers, h1 only for ChemStore, h2 for page title, h3
+for page section title. 
+[2] h1, h2, h3 must not be used for anything else
+[3] Use section>div for each logical part of a page
+[4] If anchor is to be colored, use the utility class "text-link-color".
+[5] All hover-able element must have the utility class "bg-hover-color".
+[6] If an element is to be padded from x edges, use the utility class "indent".
+*/

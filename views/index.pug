@@ -18,42 +18,42 @@ block content
 
   section
     div
-      h2(class='text-lg uppercase') quick navigation
-      ul(class='p-3 columns-2 [&>li]:break-inside-avoid [&_h3]:text-center [&_img]:mx-auto')
-        li(class='bg-red-300 navigatorButton')
+      h3 Quick Navigation
+      ul(class='indent columns-2 [&>li]:break-inside-avoid [&_p]:text-center [&_img]:mx-auto')
+        li(class='bg-red-300 navigatorButton bg-hover-color')
           a(href='/group')
             img(src='/images/allGroups.png', alt='Icon for All Groups button')
-            h3 All Groups
-        li(class='bg-orange-300 navigatorButton')
+            p All Groups
+        li(class='bg-orange-300 navigatorButton bg-hover-color')
           a(href='/chemical')
             img(src='/images/allChemicals.png', alt='Icon for All Chemicals button')
-            h3 All Chemicals
-        li(class='bg-yellow-300 navigatorButton')
+            p All Chemicals
+        li(class='bg-yellow-300 navigatorButton bg-hover-color')
           a(href='/product')
             img(src='/images/allProducts.png', alt='Icon for All Products button')
-            h3 All Products
-        li(class='bg-green-300 navigatorButton')
+            p All Products
+        li(class='bg-green-300 navigatorButton bg-hover-color')
           a(href='/group/create')
             img(src='/images/createGroup.png', alt='Icon for Create Group button')
-            h3 Create Group
-        li(class='bg-blue-300 navigatorButton')
+            p Create Group
+        li(class='bg-blue-300 navigatorButton bg-hover-color')
           a(href='/chemical/create')
             img(src='/images/createChemical.png', alt='Icon for Create Chemical button')
-            h3 Create Chemical
-        li(class='bg-violet-300 navigatorButton')
+            p Create Chemical
+        li(class='bg-violet-300 navigatorButton bg-hover-color')
           a(href='group/create')
             img(src='/images/createProduct.png' alt='Icon for Create Product button')
-            h3 Create Product
+            p Create Product
 
   section
     div
-      h2(class='text-lg uppercase') recently added
-      ul(class='p-3')
+      h3 Recently Added
+      ul(class='indent')
         each product in recentProducts
-          li(class='bg-slate-300 px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover-color relative')
-            h3(class='pl-2 capitalize') #{product.chemical.name}
-            p(class='pl-3') SKU: #{product.sku}
-            p(class='pl-3') Added #{product.addedAgo} ago
+          li(class='bg-slate-300 indent py-2 [&:not(:first-child)]:mt-2 rounded-md bg-hover-color relative')
+            p(class='pl-2 font-semibold capitalize') #{product.chemical.name}
+            p(class='indent') SKU: #{product.sku}
+            p(class='indent') Added #{product.addedAgo} ago
             a(href='/product/' + product._id class='absolute inset-0')
             
 
