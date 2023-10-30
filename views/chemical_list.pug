@@ -11,13 +11,10 @@ block content
             if (allChemicals && allChemicals.length)
                 ul
                     each chemical in allChemicals
-                        li(class='relative listItem hover-color')
-                            h2(class='text-lg capitalize') #{chemical.name}
+                        li(class='relative clickableListItem')
+                            p(class='text-lg font-semibold capitalize') #{chemical.name}
                             p!= chemical.formulaFormatted
                             p CAS no.: #{chemical.casNo}
-                            p MW (g mol
-                                sup -1 
-                                | ): #{chemical.mW}
                             a(href='/chemical/' + chemical._id class='absolute inset-0') 
                         
             else

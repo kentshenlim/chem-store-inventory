@@ -576,6 +576,33 @@ h3 {
   margin-top: 0.5rem;
 }
 
+.clickableListItem {
+  border-radius: 0.375rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.clickableListItem:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.clickableListItem {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.clickableListItem:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+.clickableListItem>:not(:first-child) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .absolute {
   position: absolute;
 }
@@ -827,19 +854,9 @@ for page section title.
   margin-top: 0.75rem;
 }
 
-.\[\&\>\:not\(\:first-child\)\]\:px-1>:not(:first-child) {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
 .\[\&\>\:not\(\:first-child\)\]\:px-2>:not(:first-child) {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.\[\&\>\:not\(\:first-child\)\]\:indent>:not(:first-child) {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 .\[\&\>li\]\:list-inside>li {
