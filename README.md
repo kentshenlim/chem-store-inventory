@@ -25,5 +25,6 @@ Mobile-first inventory app written to practice DB manipulation.
 - TODO: casings, store all in small case, then capitalize?
 - TODO: sidebar hidden at LHS at mobile, expand at wide screen
 - TODO: disallow deletion for sample data
-- TODO:name requires sorting
+- TODO: name requires sorting
+- TODO: dark mode toggle
 - TODO: upload SDS

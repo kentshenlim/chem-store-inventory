@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    section 
+        div(class='flex justify-between') 
+            a(href='/' class='text-link-color') &#128896; Home
+            a(href='/product/create' class='text-link-color') Create &#128898;
+    section
+        div
+            if (allProducts && allProducts.length)
+                ul
+                    each product in allProducts
+                        li(class='relative listItem hover-color')
+                            h2(class='capitalize') #{product.chemical.name}
+                            p SKU: #{product.sku}
+                            p Left: 
+                                if (product.numberInStock < 10)
+                                    span(class='font-semibold text-red-500')= product.numberInStock
+                                else if (product.numberInStock < 20)
+                                    span(class='font-semibold text-orange-500')= product.numberInStock
+                                else
+                                    span(class='font-semibold text-green-500')= product.numberInStock
+                            a(href='/product/' + product._id class='absolute inset-0') 
+
+            else
+                p Oops, it seems like the record is empty. Please create one to add to it.
