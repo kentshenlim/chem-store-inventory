@@ -26,9 +26,6 @@
   .navigatorButton {
     @apply px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md relative;
   }
-  .listItem {
-    @apply list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border px-3 py-2 border-transparent border-b-slate-400 [&>:not(:first-child)]:px-1;
-  }
 }
 
 @layer utilities {
@@ -51,4 +48,5 @@ for page section title.
 [4] If anchor is to be colored, use the utility class "text-link-color".
 [5] All hover-able element must have the utility class "bg-hover-color".
 [6] If an element is to be padded from x edges, use the utility class "indent".
+[7] Must include cases for zero-length array
 */
