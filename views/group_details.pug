@@ -8,13 +8,13 @@ block content
     
     section
         div 
-            h2(class='uppercase') #{group.name}
+            h2(class='text-lg uppercase') #{group.name}
             p #{group.description}
-            h2(class='mt-4 uppercase') Chemicals in record
+            h2(class='mt-4 text-lg uppercase') Chemicals in record
                 if (groupChemicals && groupChemicals.length)
                     ul(class='px-3')
                         each chemical in groupChemicals
                             li(class='list-disc list-inside')
-                                a(href='/chemical/' + chemical._id class='capitalize text-link-color')!= chemical.name
+                                a(href='/chemical/' + chemical._id class='text-base capitalize text-link-color')!= chemical.name
                 else 
                     p(class='font-normal normal-case') None of the chemicals in the record possess this particular functional group.

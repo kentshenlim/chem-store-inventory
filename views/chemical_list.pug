@@ -12,7 +12,7 @@ block content
                 ul
                     each chemical in allChemicals
                         li(class='relative listItem hover-color')
-                            h2(class='capitalize') #{chemical.name}
+                            h2(class='text-lg capitalize') #{chemical.name}
                             p!= chemical.formulaFormatted
                             p CAS no.: #{chemical.casNo}
                             p MW (g mol

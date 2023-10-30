@@ -17,7 +17,7 @@
     @apply px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md hover:bg-slate-200 relative;
   }
   .listItem {
-    @apply list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border px-3 py-2 border-transparent border-b-slate-400;
+    @apply list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border px-3 py-2 border-transparent border-b-slate-400 [&>:not(:first-child)]:px-1;
   }
 }
 

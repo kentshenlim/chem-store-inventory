@@ -11,7 +11,7 @@ block content
                 ul
                     each product in allProducts
                         li(class='relative listItem hover-color')
-                            h2(class='capitalize') #{product.chemical.name}
+                            h2(class='text-lg capitalize') #{product.chemical.name}
                             p SKU: #{product.sku}
                             p Left: 
                                 if (product.numberInStock < 10)

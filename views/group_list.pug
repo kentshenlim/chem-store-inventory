@@ -11,7 +11,7 @@ block content
                 ul
                 each group in allGroups
                     li.listItem
-                        h2(class='capitalize') #{group.name}
+                        h2(class='text-lg capitalize') #{group.name}
                         p(class='line-clamp-3') #{group.description}
                         a(href='/group/' + group._id class='t' class='text-link-color') Inspect
                         a(href=group.wikiUrl target='_blank' class='inline-flex items-center self-end gap-1 text-right text-link-color')

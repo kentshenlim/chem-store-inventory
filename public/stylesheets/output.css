@@ -582,6 +582,11 @@ h1,
   margin-top: 0.75rem;
 }
 
+.listItem>:not(:first-child) {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .absolute {
   position: absolute;
 }
@@ -724,6 +729,11 @@ h1,
   text-align: right;
 }
 
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -738,12 +748,12 @@ h1,
   font-weight: 700;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-normal {
   font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {
@@ -756,21 +766,6 @@ h1,
 
 .normal-case {
   text-transform: none;
-}
-
-.text-green-300 {
-  --tw-text-opacity: 1;
-  color: rgb(134 239 172 / var(--tw-text-opacity));
-}
-
-.text-orange-300 {
-  --tw-text-opacity: 1;
-  color: rgb(253 186 116 / var(--tw-text-opacity));
-}
-
-.text-red-300 {
-  --tw-text-opacity: 1;
-  color: rgb(252 165 165 / var(--tw-text-opacity));
 }
 
 .text-green-500 {
@@ -798,18 +793,8 @@ h1,
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-slate-200:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-
 .\[\&\:not\(\:first-child\)\]\:mt-2:not(:first-child) {
   margin-top: 0.5rem;
-}
-
-.\[\&\>\*\]\:px-3>* {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 .\[\&\>li\]\:list-inside>li {
