@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Group = require('../models/group');
+const Chemical = require('../models/chemical');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
@@ -11,7 +12,22 @@ module.exports = {
   }),
 
   details_get: asyncHandler(async (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: GET group detail for id ${req.params.id}`);
+    const [group, groupChemicals] = await Promise.all([
+      Group.findById(req.params.id).exec(),
+      Chemical.find({ groups: req.params.id }).exec(),
+    ]);
+    if (!group) {
+      const err = new Error('Group ID Not Found');
+      err.status = 404;
+      next(err);
+      return;
+    }
+    const groupName = group.name.toUpperCase();
+    res.render('group_details', {
+      title: `Functional Group: ${groupName}`,
+      group,
+      groupChemicals,
+    });
   }),
 
   create_get: asyncHandler(async (req, res, next) => {
