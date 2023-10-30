@@ -1,11 +1,16 @@
 doctype html
-html
+html(class='bg-slate-50')
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/output.css')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  body(class='bg-slate-50')
+  body
+    section 
+      div
+        h1(class='text-xl')= title
+
     block content
+
     section 
       div(class='text-center bg-violet-300') 
         a(href='https://github.com/kentshenlim/chem-store-inventory')

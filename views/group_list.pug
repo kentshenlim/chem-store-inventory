@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    section 
+        div 
+            ul
+            each group in allGroups
+                li(class='list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border px-3 py-2 border-transparent border-b-slate-400')
+                    h2(class='capitalize') #{group.name}
+                    p(class='line-clamp-3') #{group.description}
+                    a(href='/group/' + group._id class='t' class='text-link-color') Inspect
+                    a(href=group.wikiUrl target='_blank' class='inline-flex items-center self-end gap-1 text-right text-link-color')
+                        img(src='/images/externalLink.svg', alt="External link icon" class='inline')
+                        | #[em Wiki ]
+
+
+

@@ -1,8 +1,13 @@
 const asyncHandler = require('express-async-handler');
+const Group = require('../models/group');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET group list');
+    const allGroups = await Group.find().sort({ name: 1 }).exec();
+    res.render('group_list', {
+      title: 'All Functional Groups',
+      allGroups,
+    });
   }),
 
   details_get: asyncHandler(async (req, res, next) => {
