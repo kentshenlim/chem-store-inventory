@@ -626,6 +626,10 @@ h1,
   align-items: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
