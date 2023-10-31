@@ -18,8 +18,7 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: group empty url will DB accept?
-- TODO: form validation
+- TODO: form for chemical CREATE and product CREATE
 - TODO: CUD
 - TODO: disallow deletion for sample data
 - TODO: responsive
