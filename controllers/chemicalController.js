@@ -4,10 +4,20 @@ const Product = require('../models/product');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
-    const allChemicals = await Chemical.find({}, { groups: 0 }).sort({ name: 1 }).populate('groups').exec();
+    // const allChemicals = await Chemical.find({}, { groups: 0 }).sort({ name:
+    // 1 }).populate('groups').exec();
+    const page = req.params.page || 1;
+    const paginateOption = {
+      projection: { groups: 0 },
+      sort: { name: 1 },
+      limit: 8,
+      page,
+    };
+    const paginateChemicals = await Chemical.paginate({}, paginateOption);
+    console.log(paginateChemicals);
     res.render('chemical_list', {
       title: 'All Chemicals',
-      allChemicals,
+      paginateChemicals,
     });
   }),
 

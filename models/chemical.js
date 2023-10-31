@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const { Schema } = mongoose;
 
@@ -38,5 +39,8 @@ chemicalSchema.virtual('formulaFormatted').get(function () {
   const str = this.formula.replace(/(\d+)/g, '<sub>$1</sub>');
   return str;
 });
+
+// Plugin
+chemicalSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Chemical', chemicalSchema);
