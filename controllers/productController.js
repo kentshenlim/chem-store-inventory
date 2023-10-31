@@ -13,7 +13,17 @@ module.exports = {
   }),
 
   details_get: asyncHandler(async (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: GET product detail for id ${req.params.id}`);
+    const product = await Product.findById(req.params.id).populate('chemical').exec();
+    if (!product) {
+      const err = new Error('Product ID Not Found');
+      err.status = 404;
+      next(err);
+      return;
+    }
+    res.render('product_details', {
+      title: `Product: ${product.sku}`,
+      product,
+    });
   }),
 
   create_get: asyncHandler(async (req, res, next) => {

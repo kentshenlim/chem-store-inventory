@@ -51,5 +51,6 @@ for page section title.
 [4] If anchor is to be colored, use the utility class "text-link-color".
 [5] All hover-able element must have the utility class "bg-hover-color".
 [6] If an element is to be padded from x edges, use the utility class "indent".
+Padding with other sizes should be minimized.
 [7] Must include cases for zero-length array
 */

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
+const format = require('date-fns/format');
 
 const { Schema } = mongoose;
 
@@ -46,6 +47,10 @@ productSchema.virtual('url').get(function () {
 
 productSchema.virtual('addedAgo').get(function () {
   return formatDistanceToNow(this.added);
+});
+
+productSchema.virtual('added_dd_mm_yyyy').get(function () {
+  return format(this.added, 'dd/MM/yyyy');
 });
 
 module.exports = mongoose.model('Product', productSchema);

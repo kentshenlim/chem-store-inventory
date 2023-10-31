@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    section 
+        div(class='flex justify-between') 
+            a(href='/product' class='text-link-color') &#128896; List
+            a(href='/' class='text-link-color') Home
+            a(href='/product/' + product._id + '/update' class='text-link-color') Edit &#128898;
+
+
+    section
+        div
+            h3 #{product.chemical.name} 
+                | (SKU: #{product.sku})
+            p(class='indent') #{product.description}
+
+    section
+        div
+            h3 Details
+            p(class='capitalize indent') Pack Size: #{product.packSize}
+            p(class='capitalize indent') Price: #{product.price}
+
+
+    section 
+        div
+            h3 Number in Stock
+            if (product.numberInStock < 10)
+                span(class='font-semibold text-red-500 indent')= product.numberInStock
+            else if (product.numberInStock < 20)
+                span(class='font-semibold text-orange-500 indent')= product.numberInStock
+            else 
+                span(class='font-semibold text-green-500 indent')= product.numberInStock
