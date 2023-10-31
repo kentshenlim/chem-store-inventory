@@ -18,6 +18,8 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
+- TODO: group empty url will DB accept?
+- TODO: form validation
 - TODO: CUD
 - TODO: disallow deletion for sample data
 - TODO: responsive

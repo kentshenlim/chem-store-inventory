@@ -30,9 +30,11 @@ module.exports = {
     });
   }),
 
-  create_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET group create form');
-  }),
+  create_get: (req, res, next) => {
+    res.render('group_create', {
+      title: 'Create New Group',
+    });
+  },
 
   create_post: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: POST group create form');

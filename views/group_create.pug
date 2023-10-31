@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    section 
+        div(class='flex justify-between') 
+            a(href='/' class='text-link-color') &#128896; Home
+
+    section
+        div
+            form(method='post' action='') 
+                label(for='name' class='block compulsoryField') Name
+                input#name(type='text' class='inputText' placeholder='Alkane' required=true)
+                p(class='text-sm') Functional group name
+
+                label(for='description' class='block compulsoryField') Description
+                textarea#description(name='description' class='inputText' rows=5 placeholder='Alkane is made up of C-H bonds ...' minLength=3)
+                p(class='text-sm') Description of functional group, at least 3 characters
+
+                label(for='wikiUrl' class='block') Wiki URL
+                input#wikiUrl(type='url', name='wikiUrl' class='inputText' placeholder='https://en.wikipedia.org/wiki/Alkane')
+                p(class='text-sm') Link to Wiki page, must start with "https"
+
+                button(type='submit' class='formSubmitBtn') Create
