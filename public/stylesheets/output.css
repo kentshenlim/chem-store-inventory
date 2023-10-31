@@ -623,6 +623,10 @@ h3 {
   margin-bottom: 0.75rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -679,12 +683,21 @@ h3 {
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
 }
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-x-5 {
+  -moz-column-gap: 1.25rem;
+       column-gap: 1.25rem;
 }
 
 .self-end {
