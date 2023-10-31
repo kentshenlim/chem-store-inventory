@@ -47,14 +47,17 @@ block content
 
   section
     div
-      h3 Recently Added
-      ul(class='indent')
-        each product in recentProducts
-          li(class='bg-slate-300 indent py-2 [&:not(:first-child)]:mt-2 rounded-md bg-hover-color relative')
-            p(class='pl-2 font-semibold capitalize') #{product.chemical.name}
-            p(class='indent') SKU: #{product.sku}
-            p(class='indent') Added #{product.addedAgo} ago
-            a(href='/product/' + product._id class='absolute inset-0')
+      h3 New Product
+      if (recentProducts && recentProducts.length)
+        ul(class='indent')
+          each product in recentProducts
+            li(class='bg-slate-300 indent py-2 [&:not(:first-child)]:mt-2 rounded-md bg-hover-color relative')
+              p(class='pl-2 font-semibold capitalize truncate') #{product.chemical.name}
+              p(class='indent') SKU: #{product.sku}
+              p(class='indent') Added #{product.addedAgo} ago
+              a(href='/product/' + product._id class='absolute inset-0')
+      else
+        p Oops, it appears that no new products have been added lately.
             
 
 

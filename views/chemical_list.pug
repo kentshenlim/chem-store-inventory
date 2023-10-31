@@ -12,7 +12,7 @@ block content
                 ul
                     each chemical in allChemicals
                         li(class='relative clickableListItem')
-                            p(class='text-lg font-semibold capitalize') #{chemical.name}
+                            p(class='text-lg font-semibold capitalize truncate') #{chemical.name}
                             p!= chemical.formulaFormatted
                             p CAS no.: #{chemical.casNo}
                             a(href='/chemical/' + chemical._id class='absolute inset-0') 

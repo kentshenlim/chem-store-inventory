@@ -70,7 +70,6 @@ async function createGroup({ name, description, wikiUrl }, idx) {
 // Functions to actually create sample documents
 // Chemical refers to Group, Product refers to Chemical
 // Must be called in the order: Group → Chemical → Product
-
 async function createGroupSampleDocuments() {
   console.log('Adding groups');
   await Promise.all([
@@ -105,10 +104,55 @@ async function createGroupSampleDocuments() {
       {
         name: 'carboxylic acid',
         description:
-        'Carboxylic Acid is an organic compound characterized by the presence of a carboxyl functional group (-COOH), which consists of a carbonyl group (C=O) and a hydroxyl group (-OH) bonded to the same carbon atom. Carboxylic acids are versatile and crucial in various biological, chemical, and industrial processes. They often act as acids, readily donating protons (H+) and forming carboxylate anions. Common applications include their role as organic solvents, preservatives in food, and intermediates in the synthesis of pharmaceuticals, perfumes, and plastics.',
+          'Carboxylic Acid is an organic compound characterized by the presence of a carboxyl functional group (-COOH), which consists of a carbonyl group (C=O) and a hydroxyl group (-OH) bonded to the same carbon atom. Carboxylic acids are versatile and crucial in various biological, chemical, and industrial processes. They often act as acids, readily donating protons (H+) and forming carboxylate anions. Common applications include their role as organic solvents, preservatives in food, and intermediates in the synthesis of pharmaceuticals, perfumes, and plastics.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Carboxylic_acid',
       },
       3,
+    ),
+    createGroup(
+      {
+        name: 'amine',
+        description:
+          'Amines are organic compounds characterized by the presence of an amino functional group (-NH2). They are derivatives of ammonia (NH3) in which one or more hydrogen atoms have been replaced by organic groups. Amines are important in various chemical reactions, serving as building blocks for amino acids, proteins, and pharmaceuticals. They can be classified as primary, secondary, or tertiary amines based on the number of organic groups attached to the nitrogen atom.',
+        wikiUrl: 'https://en.wikipedia.org/wiki/Amine',
+      },
+      4,
+    ),
+    createGroup(
+      {
+        name: 'ester',
+        description:
+          "Esters are organic compounds formed by the reaction of a carboxylic acid and an alcohol. They are characterized by a carbonyl group (C=O) and an ether group (R-O-R'). Esters are known for their pleasant, fruity odors and are often found in essential oils and fragrances. They are crucial in the production of flavorings, perfumes, and plastics.",
+        wikiUrl: 'https://en.wikipedia.org/wiki/Ester',
+      },
+      5,
+    ),
+    createGroup(
+      {
+        name: 'alkyne',
+        description:
+          'Alkynes are unsaturated hydrocarbons containing at least one carbon-carbon triple bond (C≡C). They are valuable in organic chemistry for their ability to participate in various reactions and serve as precursors in the synthesis of complex organic compounds. Alkynes are essential in the production of materials like plastics, adhesives, and pharmaceuticals.',
+        wikiUrl: 'https://en.wikipedia.org/wiki/Alkyne',
+      },
+      6,
+    ),
+    createGroup(
+      {
+        name: 'amide',
+        description:
+          'Amides are organic compounds derived from carboxylic acids. They are characterized by the presence of a carbonyl group (C=O) and an amino group (NH2 or NR2) bonded to the same carbon atom. Amides play a vital role in biochemistry, serving as key components in the structure of proteins and peptides. They are also used in the synthesis of various pharmaceuticals, polymers, and agricultural chemicals.',
+        wikiUrl: 'https://en.wikipedia.org/wiki/Amide',
+      },
+      7,
+    ),
+    createGroup(
+      {
+        name: 'lipid',
+        description:
+          'Lipids are a diverse class of organic compounds that are hydrophobic and insoluble in water. They play various essential roles in living organisms, including energy storage, cell membrane structure, and signaling. Lipids encompass a wide range of molecules, including triglycerides (fats and oils), phospholipids (major components of cell membranes), and sterols (such as cholesterol). Understanding lipids is crucial in the fields of nutrition, biology, and biochemistry.',
+        wikiUrl: 'https://en.wikipedia.org/wiki/Lipid',
+      },
+      8,
     ),
   ]);
 }
@@ -152,9 +196,129 @@ async function createChemicalSampleDocuments() {
         formula: 'CH2=CH2',
         casNo: '74-85-1',
         mW: 28.05,
-        groupArr: [groups[1]._id, groups[2]._id],
+        groupArr: [groups[1], groups[2]],
       },
       3,
+    ),
+    createChemical(
+      {
+        name: '1-butanol',
+        formula: 'CH3(CH2)3OH',
+        casNo: '71-36-3',
+        mW: 74.12,
+        groupArr: [groups[0]],
+      },
+      4,
+    ),
+    createChemical(
+      {
+        name: 'docosahexaenoic acid ethyl ester',
+        formula: 'C24H36O2',
+        casNo: '81926-94-5',
+        mW: 356.54,
+        groupArr: [groups[5]],
+      },
+      5,
+    ),
+    createChemical(
+      {
+        name: 'sodium amide',
+        formula: 'NaNH2',
+        casNo: '7782-92-5',
+        mW: 39.01,
+        groupArr: [groups[7]],
+      },
+      6,
+    ),
+    createChemical(
+      {
+        name: '(Δ9-Cis) PC (DOPC)',
+        formula: 'C44H84NO8P',
+        casNo: '4235-95-4',
+        mW: 786.11,
+        groupArr: [groups[8]],
+      },
+      7,
+    ),
+    createChemical(
+      {
+        name: 'eicosapentaenoic acid ethyl ester',
+        formula: 'C22H34O2',
+        casNo: '86227-47-6',
+        mW: 330.5,
+        groupArr: [groups[5]],
+      },
+      8,
+    ),
+    createChemical(
+      {
+        name: 'POPC',
+        formula: 'C42H82NO8P',
+        casNo: '67-66-3',
+        mW: 760.08,
+        groupArr: [groups[8]],
+      },
+      9,
+    ),
+    createChemical(
+      {
+        name: 'cholesterol',
+        formula: 'C27H46O',
+        casNo: '57-88-5',
+        mW: 386.65,
+        groupArr: [groups[8]],
+      },
+      10,
+    ),
+    createChemical(
+      {
+        name: 'cyclohexylacetylene',
+        formula: 'C6H11C≡CH',
+        casNo: '931-48-6',
+        mW: 108.18,
+        groupArr: [groups[1], groups[6]],
+      },
+      11,
+    ),
+    createChemical(
+      {
+        name: '1-ethynyl-1-cyclohexanol',
+        formula: 'HC≡CC6H10OH',
+        casNo: '78-27-3',
+        mW: 124.18,
+        groupArr: [groups[0], groups[6]],
+      },
+      12,
+    ),
+    createChemical(
+      {
+        name: 'benzoic acid',
+        formula: 'C6H5COOH',
+        casNo: '65-85-0',
+        mW: 122.12,
+        groupArr: [groups[3]],
+      },
+      13,
+    ),
+    createChemical(
+      {
+        name: 'octane',
+        formula: 'CH3(CH2)6CH3',
+        casNo: '111-65-9',
+        mW: 114.23,
+        groupArr: [groups[1]],
+      },
+      14,
+    ),
+    createChemical(
+      {
+        name: '1,4-diazabicyclo[2.2.2]octane',
+        formula: 'C6H12N2',
+        casNo: '280-57-9',
+        mW: 112.17,
+        groupArr: [groups[1], groups[4]],
+      },
+      15,
     ),
   ]);
 }
@@ -195,6 +359,118 @@ async function createProductSampleDocuments() {
         price: 'USD 57.44',
       },
       2,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[5],
+        sku: '81926-94-5',
+        description: 'United States Pharmacopeia (USP) Reference Standard',
+        numberInStock: 3,
+        packSize: '500 mg',
+        price: 'USD 1034.53',
+      },
+      3,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[5],
+        sku: 'D2954600',
+        description: 'European Pharmacopoeia (EP) Reference Standard',
+        numberInStock: 12,
+        packSize: '50 mg',
+        price: 'USD 163.54',
+      },
+      4,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[6],
+        sku: '208329',
+        description: '98%',
+        numberInStock: 17,
+        packSize: '50 g',
+        price: 'USD 68.65',
+      },
+      5,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[8],
+        sku: 'PHR1790',
+        description:
+          'Pharmaceutical Secondary Standard: Certified Reference Material',
+        numberInStock: 3,
+        packSize: '1 g',
+        price: 'USD 312.80',
+      },
+      6,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[8],
+        sku: '1234307',
+        description: 'United States Pharmacopeia (USP) Reference Standard',
+        numberInStock: 7,
+        packSize: '500 mg',
+        price: 'USD 1034.53',
+      },
+      7,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[9],
+        sku: '850855C',
+        description: 'Avanti Polar Lipids',
+        numberInStock: 24,
+        packSize: '5 mg',
+        price: 'USD 574.58',
+      },
+      8,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[10],
+        sku: '26732',
+        description: 'From lanolin, ≥99.0% (GC)',
+        numberInStock: 73,
+        packSize: '5 g',
+        price: 'USD 52.90',
+      },
+      9,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[10],
+        sku: 'C8667',
+        description: 'Sigma Grade, ≥99%',
+        numberInStock: 2,
+        packSize: '100 g',
+        price: 'USD 1410.73',
+      },
+      10,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[10],
+        sku: 'C3045',
+        description: 'Powder, BioReagent, suitable for cell culture, ≥99%',
+        numberInStock: 7,
+        packSize: '25 g',
+        price: 'USD 571.43',
+      },
+      11,
+    ),
+    createProduct(
+      {
+        chemical: chemicals[10],
+        sku: 'PHR1533',
+        description:
+          'Pharmaceutical Secondary Standard; Certified Reference Material',
+        numberInStock: 9,
+        packSize: '500 mg',
+        price: 'USD 123.65',
+      },
+      12,
     ),
   ]);
 }
