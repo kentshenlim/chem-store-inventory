@@ -18,13 +18,10 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: action bar at bottom for page other than home
 - TODO: pagination
-- TODO: responsive
-- TODO: views and controllers
-- TODO: casings, store all in small case, then capitalize?
-- TODO: sidebar hidden at LHS at mobile, expand at wide screen
+- TODO: CUD
 - TODO: disallow deletion for sample data
-- TODO: name requires sorting
+- TODO: responsive
+- TODO: sidebar hidden at LHS at mobile, expand at wide screen
 - TODO: dark mode toggle
 - TODO: upload SDS
