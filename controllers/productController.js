@@ -3,12 +3,23 @@ const Product = require('../models/product');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
-    const allProducts = await Product.find({}, {
-      chemical: 1, sku: 1, numberInStock: 1, added: 1,
-    }).sort({ added: -1 }).populate('chemical').exec();
+    // const allProducts = await Product.find({}, {
+    //   chemical: 1, sku: 1, numberInStock: 1, added: 1,
+    // }).sort({ added: -1 }).populate('chemical').exec();
+    const page = req.params.page || 1;
+    const paginateOption = {
+      projection: {
+        chemical: 1, sku: 1, numberInStock: 1, added: 1,
+      },
+      sort: { added: -1 },
+      populate: 'chemical',
+      limit: 8,
+      page,
+    };
+    const paginateProducts = await Product.paginate({}, paginateOption);
     res.render('product_list', {
       title: 'All Products',
-      allProducts,
+      paginateProducts,
     });
   }),
 

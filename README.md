@@ -18,7 +18,6 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: pagination
 - TODO: CUD
 - TODO: disallow deletion for sample data
 - TODO: responsive

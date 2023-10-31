@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const format = require('date-fns/format');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const { Schema } = mongoose;
 
@@ -52,5 +53,8 @@ productSchema.virtual('addedAgo').get(function () {
 productSchema.virtual('added_dd_mm_yyyy').get(function () {
   return format(this.added, 'dd/MM/yyyy');
 });
+
+// Plugin
+productSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Product', productSchema);

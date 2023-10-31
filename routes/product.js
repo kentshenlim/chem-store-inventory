@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get('/', controller.list_get);
 
+router.get('/page:page', controller.list_get); // Must come before /:id
+
 router.get('/create', controller.create_get);
 
 router.post('/create', controller.create_post);

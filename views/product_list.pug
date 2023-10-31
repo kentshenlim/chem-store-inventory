@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    - const allProducts = paginateProducts.docs;
+
     section 
         div(class='flex justify-between') 
             a(href='/' class='text-link-color') &#128896; Home
@@ -25,3 +27,23 @@ block content
 
             else
                 p Oops, it seems like the record is empty. Please create one to add to it.
+        
+        if (allProducts && allProducts.length)
+            section
+                div
+                    p Showing #{allProducts.length} of #{paginateProducts.totalDocs} products.
+
+            section
+                div(class='flex justify-center gap-x-5') 
+                    if (paginateProducts.hasPrevPage)
+                        if (paginateProducts.prevPage != 1)
+                            a(href='/product/page1' class='text-link-color') 1
+                            | ...
+                        a(href='/product/page' + paginateProducts.prevPage class='text-link-color') #{paginateProducts.prevPage}
+                    p(class='font-bold underline') #{paginateProducts.page}
+                    if (paginateProducts.hasNextPage)
+                        a(href='/product/page' + paginateProducts.nextPage class='text-link-color') #{paginateProducts.nextPage}
+                        if (paginateProducts.nextPage != paginateProducts.totalPages)
+                            | ...
+                            a(href='/product/page' + paginateProducts.totalPages class='text-link-color') #{paginateProducts.totalPages}
+

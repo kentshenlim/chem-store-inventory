@@ -14,7 +14,6 @@ module.exports = {
       page,
     };
     const paginateChemicals = await Chemical.paginate({}, paginateOption);
-    console.log(paginateChemicals);
     res.render('chemical_list', {
       title: 'All Chemicals',
       paginateChemicals,
