@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
 const Group = require('../models/group');
 const Chemical = require('../models/chemical');
 
@@ -36,9 +37,46 @@ module.exports = {
     });
   },
 
-  create_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: POST group create form');
-  }),
+  create_post: [
+    body('name')
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage('Functional group name must not be empty')
+      .isLength({ max: 100 })
+      .withMessage('Functional group name cannot have more than 100 characters'),
+    body('description')
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage('Description must not be empty')
+      .isLength({ max: 1000 })
+      .withMessage('Description cannot have more than 1000 characters'),
+    body('wikiUrl', 'Wiki URL must be valid URL, starting with "https://"')
+      .trim()
+      .optional({ values: 'falsy' })
+      .isURL({ protocols: ['https'] }),
+    asyncHandler(async (req, res, next) => {
+      const errors = validationResult(req);
+      const group = new Group({
+        name: req.body.name,
+        description: req.body.description,
+        wikiUrl: req.body.wikiUrl,
+      });
+      if (!errors.isEmpty()) {
+        res.render('group_create', {
+          title: 'Create New Group',
+          group,
+          errors: errors.mapped(),
+        });
+        return;
+      }
+      const groupOld = await Group.findOne({ name: req.body.name }).collation({ locale: 'en', strength: 2 }).exec();
+      if (groupOld) res.redirect(groupOld.url);
+      else {
+        await group.save();
+        res.redirect(group.url);
+      }
+    }),
+  ],
 
   update_get: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: GET group update form');

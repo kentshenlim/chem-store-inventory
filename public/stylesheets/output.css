@@ -780,11 +780,6 @@ label:not(:first-child) {
   border-width: 1px;
 }
 
-.border-red-800 {
-  --tw-border-opacity: 1;
-  border-color: rgb(153 27 27 / var(--tw-border-opacity));
-}
-
 .border-transparent {
   border-color: transparent;
 }
@@ -888,6 +883,11 @@ label:not(:first-child) {
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -907,6 +907,11 @@ label:not(:first-child) {
   padding-right: 0.75rem;
 }
 
+.text-warning-color {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 /*
 Rules on HTML structure
 [1] Only three levels of headers, h1 only for ChemStore, h2 for page title, h3
@@ -918,6 +923,12 @@ for page section title.
 [6] If an element is to be padded from x edges, use the utility class "indent".
 Padding with other sizes should be minimized.
 [7] Must include cases for zero-length array
+[8] For styling of form elements mostly use component class
+[9] For form, store unescaped data in DB, and always render escaped data if the
+data is from client
+[10] Form validation must be carried out in all three stages: client-side (form
+element), server side (express-validator) and DB-side (mongoose). For maxLength,
+better use server-sides; client-side bad UI (cannot enter more char).
 */
 
 .\[\&\:not\(\:first-child\)\]\:mt-2:not(:first-child) {

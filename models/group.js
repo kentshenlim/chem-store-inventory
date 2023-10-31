@@ -16,7 +16,7 @@ const groupSchema = new Schema({
   wikiUrl: {
     type: String,
     validate: {
-      validator: (v) => v.startsWith('https://'),
+      validator: (v) => (v === '' || v.startsWith('https')),
       message: () => 'wikiUrl must start with https://',
     },
   },
