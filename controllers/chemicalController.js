@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const Chemical = require('../models/chemical');
 const Product = require('../models/product');
+const Group = require('../models/group');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
@@ -39,7 +40,11 @@ module.exports = {
   }),
 
   create_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET chemical create form');
+    const allGroups = await Group.find({}, { name: 1 }).sort({ name: 1 }).exec();
+    res.render('chemical_create', {
+      title: 'Create New Chemical',
+      allGroups,
+    });
   }),
 
   create_post: asyncHandler(async (req, res, next) => {

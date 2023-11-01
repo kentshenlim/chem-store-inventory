@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    section 
+        div(class='flex justify-between') 
+            a(href='/' class='text-link-color') &#128896; Home
+
+    section
+        div
+            form(method='post' action='') 
+                label(for='name' class='block compulsoryField') Name
+                input#name(type='text', name='name' class='inputText' placeholder='Methane')
+                if (errors && errors.name)
+                    p(class='text-sm text-warning-color')!= errors.name.msg
+                else
+                    p(class='text-sm') Chemical name
+                
+                label(for='formula' class='block compulsoryField') Formula
+                input#formula(type='text' name='formula' placeholder='CH4' class='inputText')
+                if (errors && errors.formula)
+                    p(class='text-sm text-warning-color')!= errors.formula.msg
+                else 
+                    p(class='text-sm') Chemical formula, linear or empirical
+
+                label(for='mW' class='block compulsoryField') Molar Mass
+                input#mW(type='number', name="mW" placeholder='16.04' class='inputText')
+                if (errors && errors.mW)
+                    p(class='text-sm text-warning-color')!= errors.mW.msg
+                else
+                    p(class='text-sm') Molar mass, in g mol 
+                        sup -1
+
+                label(for='groups' class='block') Functional Group
+
+                button(type='submit' class='formSubmitBtn') Submit
