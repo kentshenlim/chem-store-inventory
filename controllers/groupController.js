@@ -5,7 +5,7 @@ const Chemical = require('../models/chemical');
 
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
-    const allGroups = await Group.find().sort({ name: 1 }).exec();
+    const allGroups = await Group.find().collation({ locale: 'en' }).sort({ name: 1 }).exec();
     res.render('group_list', {
       title: 'All Functional Groups',
       allGroups,
