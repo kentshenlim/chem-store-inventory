@@ -48,6 +48,7 @@ module.exports = {
   }),
 
   create_post: asyncHandler(async (req, res, next) => {
+    console.log(req.body.groups);
     res.send('NOT IMPLEMENTED: POST chemical create form');
   }),
 

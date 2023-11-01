@@ -1,6 +1,10 @@
 extends layout
 
 block content
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css')
+    script(src='https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js')
+
+
     section 
         div(class='flex justify-between') 
             a(href='/' class='text-link-color') &#128896; Home
@@ -14,6 +18,14 @@ block content
                     p(class='text-sm text-warning-color')!= errors.name.msg
                 else
                     p(class='text-sm') Chemical name
+                
+                label(for='groups' class='block') Functional Group
+                select#groups(name='groups' multiple) 
+                    each group in allGroups
+                        option(value=group._id)!= group.name
+                p(class='text-sm') Functional group possessed by current chemical; can select multiple. 
+                    a(href='/group/create' class='text-link-color') Create
+                    |  one if not already exist.
                 
                 label(for='formula' class='block compulsoryField') Formula
                 input#formula(type='text' name='formula' placeholder='CH4' class='inputText')
@@ -30,6 +42,9 @@ block content
                     p(class='text-sm') Molar mass, in g mol 
                         sup -1
 
-                label(for='groups' class='block') Functional Group
 
                 button(type='submit' class='formSubmitBtn') Submit
+        
+
+    script.
+        new MultiSelectTag('groups')

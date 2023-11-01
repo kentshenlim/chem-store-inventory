@@ -30,6 +30,11 @@
   }
 }
 
+/* For multiple select tag from library */
+.mult-select-tag {
+  @apply border-input;
+}
+
 @layer components {
   .navigatorButton {
     @apply px-3 py-2 [&:not(:first-child)]:mt-2 rounded-md relative;

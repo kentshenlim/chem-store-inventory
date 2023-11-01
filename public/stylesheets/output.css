@@ -696,13 +696,6 @@ label:not(:first-child) {
   -webkit-line-clamp: 3;
 }
 
-.line-clamp-1 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
 .block {
   display: block;
 }
@@ -738,16 +731,6 @@ label:not(:first-child) {
 .columns-2 {
   -moz-columns: 2;
        columns: 2;
-}
-
-.columns-3 {
-  -moz-columns: 3;
-       columns: 3;
-}
-
-.break-inside-avoid {
-  -moz-column-break-inside: avoid;
-       break-inside: avoid;
 }
 
 .flex-col {
@@ -795,6 +778,11 @@ label:not(:first-child) {
 
 .border {
   border-width: 1px;
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .border-transparent {
@@ -881,10 +869,6 @@ label:not(:first-child) {
   font-weight: 600;
 }
 
-.font-normal {
-  font-weight: 400;
-}
-
 .capitalize {
   text-transform: capitalize;
 }
@@ -926,6 +910,19 @@ label:not(:first-child) {
 .text-warning-color {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+/* For multiple select tag from library */
+
+.mult-select-tag {
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+}
+
+.mult-select-tag:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(71 85 105 / var(--tw-border-opacity));
 }
 
 /*
