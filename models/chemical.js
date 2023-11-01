@@ -8,15 +8,17 @@ const chemicalSchema = new Schema({
   name: {
     type: String,
     required: true,
+    maxLength: [100, 'Name of chemical cannot have more than 100 characters'],
   },
   formula: {
     type: String,
     required: true,
+    maxLength: [100, 'Chemical formula cannot have more than 100 characters'],
   },
   casNo: {
     type: String,
     required: true,
-    maxLength: 12,
+    maxLength: [12, 'CAS number cannot have more than 12 characters'],
   },
   mW: {
     type: Number,

@@ -13,7 +13,7 @@ block content
         div
             form(method='post' action='') 
                 label(for='name' class='block compulsoryField') Name
-                input#name(type='text', name='name' class='inputText' placeholder='Methane')
+                input#name(type='text', name='name' class='inputText' placeholder='Methane' value=(chemical ? chemical.name : '') required)
                 if (errors && errors.name)
                     p(class='text-sm text-warning-color')!= errors.name.msg
                 else
@@ -22,20 +22,27 @@ block content
                 label(for='groups' class='block') Functional Group
                 select#groups(name='groups' multiple) 
                     each group in allGroups
-                        option(value=group._id)!= group.name
+                        option(value=group._id selected=group.checked)!= group.name
                 p(class='text-sm') Functional group possessed by current chemical; can select multiple. 
                     a(href='/group/create' class='text-link-color') Create
                     |  one if not already exist.
                 
                 label(for='formula' class='block compulsoryField') Formula
-                input#formula(type='text' name='formula' placeholder='CH4' class='inputText')
+                input#formula(type='text' name='formula' placeholder='CH4' class='inputText' value=(chemical ? chemical.formula : '') required)
                 if (errors && errors.formula)
                     p(class='text-sm text-warning-color')!= errors.formula.msg
                 else 
                     p(class='text-sm') Chemical formula, linear or empirical
 
+                label(for='casNo' class='block compulsoryField') CAS
+                input#casNo(type='text' name='casNo' placeholder='74-82-8' class='inputText' value=(chemical ? chemical.casNo : '') required)
+                if (errors && errors.casNo)
+                    p(class='text-sm text-warning-color')!= errors.casNo.msg
+                else
+                    p(class='text-sm') Chemical Abstracts Service number
+
                 label(for='mW' class='block compulsoryField') Molar Mass
-                input#mW(type='number', name="mW" placeholder='16.04' class='inputText')
+                input#mW(type='number', name="mW" placeholder='16.04' class='inputText' value=(chemical ? chemical.mW : '') required)
                 if (errors && errors.mW)
                     p(class='text-sm text-warning-color')!= errors.mW.msg
                 else
