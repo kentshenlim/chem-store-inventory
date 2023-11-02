@@ -103,7 +103,7 @@ module.exports = {
       return;
     }
     res.render('group_create', {
-      title: `Edit: ${groupOld.name.toUpperCase()}`,
+      title: `Edit Group: ${groupOld.name.toUpperCase()}`,
       group: groupOld,
       isUpdating: true,
     });
@@ -138,7 +138,7 @@ module.exports = {
       });
       if (!errors.isEmpty()) {
         res.render('group_create', {
-          title: `Edit: ${group.name.toUpperCase()}`,
+          title: `Edit Group: ${group.name.toUpperCase()}`,
           group,
           errors: errors.mapped(),
           isUpdating: true,

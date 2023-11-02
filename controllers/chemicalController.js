@@ -189,7 +189,7 @@ module.exports = {
           if (checkedGroups.indexOf(group._id.toString()) !== -1) group.checked = true;
         }
         res.render('chemical_create', {
-          title: 'Create New Chemical',
+          title: `Update Chemical: ${chemical.name.toUpperCase()}`,
           errors: errors.mapped(),
           allGroups,
           chemical,

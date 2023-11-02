@@ -119,12 +119,80 @@ module.exports = {
   ],
 
   update_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET product update form');
+    const { id } = req.params;
+    const [productOld, allChemicals] = await Promise.all([
+      Product.findById(id).exec(),
+      Chemical.find({}, { name: 1 }).sort({ name: 1 }).collation({ locale: 'en', strength: 2 }).exec(),
+    ]);
+    if (!productOld) {
+      const err = new Error('ID does not match any product in database');
+      err.status = 404;
+      next(err);
+      return;
+    }
+    if (productOld.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    res.render('product_create', {
+      title: `Update Product: ${productOld.sku}`,
+      allChemicals,
+      product: productOld,
+      isUpdating: true,
+    });
   }),
 
-  update_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: POST product update form');
-  }),
+  update_post: [
+    ...formValidatorFunctions,
+    asyncHandler(async (req, res, next) => {
+      const { id } = req.params;
+      const productOld = await Product.findById(id).exec();
+      if (!productOld) {
+        const err = new Error('ID does not match any product in database');
+        err.status = 404;
+        next(err);
+        return;
+      }
+      if (productOld.isProtected) {
+        res.render('access_denied', {
+          title: 'Access Denied',
+        });
+        return;
+      }
+      next();
+    }),
+    asyncHandler(async (req, res, next) => {
+      const errors = validationResult(req);
+      const productObj = {
+        chemical: req.body.chemical,
+        sku: req.body.sku,
+        description: req.body.description,
+        _id: req.params.id,
+      };
+      if (req.body.packSize) productObj.packSize = req.body.packSize;
+      if (req.body.price) productObj.price = req.body.price;
+      if (req.body.numberInStock) productObj.numberInStock = req.body.numberInStock;
+      const product = new Product(productObj);
+      if (!errors.isEmpty()) {
+        const allChemicals = await Chemical.find({}, { name: 1 })
+          .sort({ name: 1 })
+          .collation({ locale: 'en', strength: 2 })
+          .exec();
+        res.render('product_create', {
+          title: `Update Product: ${product.sku}`,
+          allChemicals,
+          product,
+          errors: errors.mapped(),
+          isUpdating: true,
+        });
+        return;
+      }
+      const updatedProduct = await Product.findByIdAndUpdate(req.params.id, product, {}).exec();
+      res.redirect(updatedProduct.url);
+    }),
+  ],
 
   delete_get: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: GET product delete form');
