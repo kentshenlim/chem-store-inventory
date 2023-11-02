@@ -104,6 +104,27 @@ module.exports = {
   }),
 
   update_post: [
+    ...formValidatorFunctions,
+    asyncHandler(async (req, res, next) => {
+      const errors = validationResult(req);
+      const group = new Group({
+        name: req.body.name,
+        description: req.body.description,
+        wikiUrl: req.body.wikiUrl,
+        _id: req.params.id,
+      });
+      if (!errors.isEmpty()) {
+        res.render('group_create', {
+          title: `Edit: ${group.name.toUpperCase()}`,
+          group,
+          errors: errors.mapped(),
+          isUpdating: true,
+        });
+        return;
+      }
+      const updatedGroup = await Group.findByIdAndUpdate(req.params.id, group, {}).exec();
+      res.redirect(updatedGroup.url);
+    }),
   ],
 
   delete_get: asyncHandler(async (req, res, next) => {
