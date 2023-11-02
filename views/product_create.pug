@@ -9,9 +9,9 @@ block content
         div 
             form(method='post' action='')
                 label(for='chemical' class='block compulsoryField') Chemical
-                select#chemical(name='chemical' size="4" class='px-0 inputText')
+                select#chemical(name='chemical' size="4" class='px-0 inputText' required=true)
                     each chemical in allChemicals
-                        option(value=chemical._id class='px-2' selected=(product && product.chemical.toString() === chemical._id.toString()))= chemical.name
+                        option(value=chemical._id class='px-2' selected=(product && product.chemical && product.chemical.toString() === chemical._id.toString()))= chemical.name
                 if (errors && errors.chemical)
                     p(class='text-sm text-warning-color')!= errors.chemical.msg
                 else
@@ -20,14 +20,14 @@ block content
                         |  one if not already exist.
 
                 label(for='sku' class='block compulsoryField') SKU
-                input#sku(type='text', name='sku' class='inputText' placeholder='E7024' value=(product ? product.sku : ''))
+                input#sku(type='text', name='sku' class='inputText' placeholder='E7024' required=true value=(product ? product.sku : ''))
                 if (errors && errors.sku)
                     p(class='text-sm text-warning-color')!= errors.sku.msg
                 else
                     p(class='text-sm') Stock keeping unit number of current product
                 
                 label(for='description' class='block compulsoryField') Description
-                textarea#description(name='description', rows='4' class='inputText' placeholder='190 proof, ACS spectrophotometric grade, 95.0%')= product ? product.description : ''
+                textarea#description(name='description', rows='4' class='inputText' placeholder='190 proof, ACS spectrophotometric grade, 95.0%' required=true minLength=3)= product ? product.description : ''
                 if (errors && errors.description)
                     p(class='text-sm text-warning-color')!= errors.description.msg
                 else

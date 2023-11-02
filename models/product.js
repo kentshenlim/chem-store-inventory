@@ -16,12 +16,13 @@ const productSchema = new Schema({
     type: String,
     required: true,
     maxLength: [20, 'productNo cannot have more than 20 characters'],
+    unique: true,
   },
   description: {
     type: String,
     required: true,
     minLength: [3, 'description must have at least 3 characters'],
-    maxLength: [200, 'description must not have more than 200 characters'],
+    maxLength: [1000, 'description must not have more than 1000 characters'],
   },
   numberInStock: {
     type: Number,
@@ -30,10 +31,12 @@ const productSchema = new Schema({
   packSize: {
     type: String,
     default: 'NA',
+    maxLength: [20, 'packSize must not have more than 20 characters'],
   },
   price: {
     type: String,
     default: 'NA',
+    maxLength: [15, 'price must not have more than 15 characters'],
   },
   added: {
     type: Date,
