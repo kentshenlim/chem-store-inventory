@@ -19,6 +19,6 @@ block content
                 ul(class='indent')
                     each chemical in groupChemicals
                         li(class='list-disc list-inside')
-                            a(href='/chemical/' + chemical._id class='capitalize text-link-color')!= chemical.name
+                            a(href='/chemical/' + chemical._id class='capitalize text-link-color')= chemical.name
             else 
                 p(class='indent') None of the chemicals in the record possess this particular functional group.

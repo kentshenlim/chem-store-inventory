@@ -68,7 +68,8 @@ module.exports = {
       .isLength({ min: 1 })
       .withMessage('Chemical formula must not be empty')
       .isLength({ max: 100 })
-      .withMessage('Chemical formula cannot have more than 100 characters'),
+      .withMessage('Chemical formula cannot have more than 100 characters')
+      .escape(), // Need to escape because will have to use unescaped version in pug
     body('casNo')
       .trim()
       .isLength({ min: 1 })

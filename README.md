@@ -19,7 +19,6 @@ Mobile-first inventory app written to practice DB manipulation.
 ## TODO
 
 - TODO: form for product CREATE
-- TODO: check form escaping
 - TODO: sku must be unique
 - TODO: CUD
 - TODO: disallow deletion for sample data
