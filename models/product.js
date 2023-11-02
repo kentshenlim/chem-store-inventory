@@ -42,6 +42,10 @@ const productSchema = new Schema({
     type: Date,
     default: new Date(),
   },
+  isProtected: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Virtuals

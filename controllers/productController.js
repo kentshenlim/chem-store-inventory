@@ -3,6 +3,47 @@ const { body, validationResult } = require('express-validator');
 const Product = require('../models/product');
 const Chemical = require('../models/chemical');
 
+// Validator functions that will be used when creating and updating Product
+// instance
+const formValidatorFunctions = [
+  body('chemical', 'Chemical must be specified').trim().isLength({ min: 1 }),
+  body('sku')
+    .trim()
+    .custom(async (value) => {
+      const exist = await Product.findOne({ sku: value }).exec();
+      if (exist) throw new Error('SKU is already in use');
+    })
+    .withMessage('The SKU already exists in the database; create a new one.')
+    .isLength({ min: 1 })
+    .withMessage('SKU must not be empty')
+    .isLength({ max: 20 })
+    .withMessage('SKU cannot have more than 20 characters'),
+  body('description')
+    .trim()
+    .isLength({ min: 3 })
+    .withMessage('Description must have at least 3 characters')
+    .isLength({ max: 1000 })
+    .withMessage('Description cannot have more than 1000 characters'),
+  body('packSize')
+    .trim()
+    .optional({ values: 'falsy' })
+    .isLength({ max: 20 })
+    .withMessage('Pack size cannot have more than 20 characters'),
+  body('price')
+    .trim()
+    .optional({ values: 'falsy' })
+    .isLength({ max: 15 })
+    .withMessage('Price cannot have more than 15 characters'),
+  body('numberInStock')
+    .trim()
+    .optional({ values: 'falsy' })
+    .isNumeric()
+    .withMessage('Stock must have digits only')
+    .isLength({ max: 15 })
+    .withMessage('Stock cannot have more than 15 characters'),
+];
+
+// Middlewares
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
     // const allProducts = await Product.find({}, {
@@ -48,43 +89,7 @@ module.exports = {
   }),
 
   create_post: [
-    body('chemical', 'Chemical must be specified')
-      .trim()
-      .isLength({ min: 1 }),
-    body('sku')
-      .trim()
-      .custom(async (value) => {
-        const exist = await Product.findOne({ sku: value }).exec();
-        if (exist) throw new Error('SKU is already in use');
-      })
-      .withMessage('The SKU already exists in the database; create a new one.')
-      .isLength({ min: 1 })
-      .withMessage('SKU must not be empty')
-      .isLength({ max: 20 })
-      .withMessage('SKU cannot have more than 20 characters'),
-    body('description')
-      .trim()
-      .isLength({ min: 3 })
-      .withMessage('Description must have at least 3 characters')
-      .isLength({ max: 1000 })
-      .withMessage('Description cannot have more than 1000 characters'),
-    body('packSize')
-      .trim()
-      .optional({ values: 'falsy' })
-      .isLength({ max: 20 })
-      .withMessage('Pack size cannot have more than 20 characters'),
-    body('price')
-      .trim()
-      .optional({ values: 'falsy' })
-      .isLength({ max: 15 })
-      .withMessage('Price cannot have more than 15 characters'),
-    body('numberInStock')
-      .trim()
-      .optional({ values: 'falsy' })
-      .isNumeric()
-      .withMessage('Stock must have digits only')
-      .isLength({ max: 15 })
-      .withMessage('Stock cannot have more than 15 characters'),
+    ...formValidatorFunctions,
     asyncHandler(async (req, res, next) => {
       const errors = validationResult(req);
       // Compulsory field first
