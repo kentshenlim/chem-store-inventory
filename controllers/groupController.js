@@ -3,6 +3,30 @@ const { body, validationResult } = require('express-validator');
 const Group = require('../models/group');
 const Chemical = require('../models/chemical');
 
+// Validator functions that will be used when creating and updating Group
+// instance
+const formValidatorFunctions = [
+  body('name')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Functional group name must not be empty')
+    .isLength({ max: 100 })
+    .withMessage('Functional group name cannot have more than 100 characters'),
+
+  body('description')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Description must not be empty')
+    .isLength({ max: 1000 })
+    .withMessage('Description cannot have more than 1000 characters'),
+
+  body('wikiUrl', 'Wiki URL must be valid URL, starting with "https://"')
+    .trim()
+    .optional({ values: 'falsy' })
+    .isURL({ protocols: ['https'] }),
+];
+
+// Middlewares
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
     const allGroups = await Group.find().collation({ locale: 'en' }).sort({ name: 1 }).exec();
@@ -38,22 +62,7 @@ module.exports = {
   },
 
   create_post: [
-    body('name')
-      .trim()
-      .isLength({ min: 1 })
-      .withMessage('Functional group name must not be empty')
-      .isLength({ max: 100 })
-      .withMessage('Functional group name cannot have more than 100 characters'),
-    body('description')
-      .trim()
-      .isLength({ min: 1 })
-      .withMessage('Description must not be empty')
-      .isLength({ max: 1000 })
-      .withMessage('Description cannot have more than 1000 characters'),
-    body('wikiUrl', 'Wiki URL must be valid URL, starting with "https://"')
-      .trim()
-      .optional({ values: 'falsy' })
-      .isURL({ protocols: ['https'] }),
+    ...formValidatorFunctions,
     asyncHandler(async (req, res, next) => {
       const errors = validationResult(req);
       const group = new Group({
@@ -79,12 +88,23 @@ module.exports = {
   ],
 
   update_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET group update form');
+    const { id } = req.params;
+    const groupOld = await Group.findById(id).exec();
+    if (!groupOld) {
+      const err = new Error('ID does not match any group in database');
+      err.status = 404;
+      next(err);
+      return;
+    }
+    res.render('group_create', {
+      title: `Edit: ${groupOld.name.toUpperCase()}`,
+      group: groupOld,
+      isUpdating: true,
+    });
   }),
 
-  update_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: POST group update form');
-  }),
+  update_post: [
+  ],
 
   delete_get: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: GET group delete form');
