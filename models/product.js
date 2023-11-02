@@ -29,11 +29,11 @@ const productSchema = new Schema({
   },
   packSize: {
     type: String,
-    required: true,
+    default: 'NA',
   },
   price: {
     type: String,
-    required: true,
+    default: 'NA',
   },
   added: {
     type: Date,

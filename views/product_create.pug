@@ -11,48 +11,46 @@ block content
                 label(for='chemical' class='block compulsoryField') Chemical
                 select#chemical(name='chemical' size="4" class='px-0 inputText')
                     each chemical in allChemicals
-                        option(value=chemical._id class='px-2')= chemical.name
+                        option(value=chemical._id class='px-2' selected=(product && product.chemical.toString() === chemical._id.toString()))= chemical.name
                 if (errors && errors.chemical)
-                    p(class='text-sm text-warning-color')!= errors.name.msg
+                    p(class='text-sm text-warning-color')!= errors.chemical.msg
                 else
                     p(class='text-sm') Chemical to which current product belongs; select one from given list. 
                         a(href='/chemical/create' class='text-link-color') Create
                         |  one if not already exist.
 
-
-
                 label(for='sku' class='block compulsoryField') SKU
-                input#sku(type='text', name='sku' class='inputText' placeholder='E7024')
+                input#sku(type='text', name='sku' class='inputText' placeholder='E7024' value=(product ? product.sku : ''))
                 if (errors && errors.sku)
-                    p(class='text-sm text-warning-color')!= errors.name.msg
+                    p(class='text-sm text-warning-color')!= errors.sku.msg
                 else
                     p(class='text-sm') Stock keeping unit number of current product
                 
                 label(for='description' class='block compulsoryField') Description
-                textarea#description(name='description', rows='4' class='inputText' placeholder='190 proof, ACS spectrophotometric grade, 95.0%')
+                textarea#description(name='description', rows='4' class='inputText' placeholder='190 proof, ACS spectrophotometric grade, 95.0%')= product ? product.description : ''
                 if (errors && errors.description)
-                    p(class='text-sm text-warning-color')!= errors.name.msg
+                    p(class='text-sm text-warning-color')!= errors.description.msg
                 else
                     p(class='text-sm') Product description, e.g. physical description, purity, etc, at least 3 characters
 
-                label(for='packSize' class='block compulsoryField') Pack Size
-                input#packSize(type='text', name='packSize' class='inputText' placeholder='1 L')
+                label(for='packSize' class='block') Pack Size
+                input#packSize(type='text', name='packSize' class='inputText' placeholder='1 L' value=(product ? product.packSize : ''))
                 if (errors && errors.packSize)
                     p(class='text-sm text-warning-color')!= errors.packSize.msg
                 else
                     p(class='text-sm') Pack size per unit sold
 
-                label(for='price' class='block compulsory') Price
-                input#price(type='text', name='price' class='inputText' placeholder='USD 110.70')
-                if (errors && errors.packSize)
+                label(for='price' class='block') Price
+                input#price(type='text', name='price' class='inputText' placeholder='USD 110.70' value=(product ? product.price : ''))
+                if (errors && errors.price)
                     p(class='text-sm text-warning-color')!= errors.price.msg
                 else
                     p(class='text-sm') Price per unit, specify currency
 
                 label(for='numberInStock' class='block') Stock
-                input#numberInStock(type='number', name='numberInStock' class='inputText' placeholder=78)
+                input#numberInStock(type='number', name='numberInStock' class='inputText' placeholder=78 value=(product ? product.numberInStock : ''))
                 if (errors && errors.numberInStock)
-                    p(class='text-sm text-warning-color')!= errors.name.numberInStock
+                    p(class='text-sm text-warning-color')!= errors.numberInStock.msg
                 else
                     p(class='text-sm') Available quantity/remaining stock
 
