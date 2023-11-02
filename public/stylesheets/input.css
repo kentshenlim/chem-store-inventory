@@ -21,7 +21,8 @@
     @apply mb-3 text-lg uppercase;
   }
   input,
-  textarea {
+  textarea,
+  select {
     outline: none;
     @apply placeholder:italic;
   }

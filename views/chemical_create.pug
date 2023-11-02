@@ -22,7 +22,7 @@ block content
                 label(for='groups' class='block') Functional Group
                 select#groups(name='groups' multiple) 
                     each group in allGroups
-                        option(value=group._id selected=group.checked)!= group.name
+                        option(value=group._id selected=group.checked)= group.name
                 p(class='text-sm') Functional group possessed by current chemical; can select multiple. 
                     a(href='/group/create' class='text-link-color') Create
                     |  one if not already exist.
@@ -50,7 +50,7 @@ block content
                         sup -1
 
 
-                button(type='submit' class='formSubmitBtn') Submit
+                button(type='submit' class='formSubmitBtn') Create
         
 
     script.

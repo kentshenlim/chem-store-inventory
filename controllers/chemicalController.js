@@ -12,6 +12,7 @@ module.exports = {
     const paginateOption = {
       projection: { groups: 0 },
       sort: { name: 1 },
+      collation: { locale: 'en', strength: 2 },
       limit: 8,
       page,
     };
@@ -41,7 +42,7 @@ module.exports = {
   }),
 
   create_get: asyncHandler(async (req, res, next) => {
-    const allGroups = await Group.find({}, { name: 1 }).sort({ name: 1 }).exec();
+    const allGroups = await Group.find({}, { name: 1 }).sort({ name: 1 }).collation({ locale: 'en', strength: 2 }).exec();
     res.render('chemical_create', {
       title: 'Create New Chemical',
       allGroups,
