@@ -42,12 +42,14 @@ block content
                     p(class='text-sm') Chemical Abstracts Service number
 
                 label(for='mW' class='block compulsoryField') Molar Mass
-                input#mW(type='number', name="mW" placeholder='16.04' class='inputText' value=(chemical ? chemical.mW : '') required)
+                input#mW(type='number', name="mW" placeholder='16.04' step="0.01" class='inputText' value=(chemical ? chemical.mW : '') required)
                 if (errors && errors.mW)
                     p(class='text-sm text-warning-color')!= errors.mW.msg
                 else
-                    p(class='text-sm') Molar mass, in g mol 
+                    p(class='text-sm') Molar mass in g mol 
                         sup -1
+                        |, at most 2 decimal places
+
 
 
                 button(type='submit' class='formSubmitBtn')= isUpdating ? 'Update' : 'Create'
