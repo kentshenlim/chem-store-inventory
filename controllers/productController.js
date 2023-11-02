@@ -53,6 +53,11 @@ module.exports = {
       .isLength({ min: 1 }),
     body('sku')
       .trim()
+      .custom(async (value) => {
+        const exist = await Product.findOne({ sku: value }).exec();
+        if (exist) throw new Error('SKU is already in use');
+      })
+      .withMessage('The SKU already exists in the database; create a new one.')
       .isLength({ min: 1 })
       .withMessage('SKU must not be empty')
       .isLength({ max: 20 })
