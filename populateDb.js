@@ -60,8 +60,12 @@ async function createProduct({
   console.log(`Added product: ${sku}`);
 }
 
-async function createGroup({ name, description, wikiUrl }, idx) {
-  const group = new Group({ name, description, wikiUrl });
+async function createGroup({
+  name, description, wikiUrl, isProtected,
+}, idx) {
+  const group = new Group({
+    name, description, wikiUrl, isProtected,
+  });
   await group.save();
   groups[idx] = group;
   console.log(`Added group: ${name}`);
@@ -79,6 +83,7 @@ async function createGroupSampleDocuments() {
         description:
           'Alcohol is an organic compound characterized by its structure, which includes a hydroxyl (-OH) functional group attached to a carbon atom. The alkyl group, denoted by "R", varies among different types of alcohols, such as methyl, ethyl, or propyl alcohols. Alcohols have a wide range of applications, serving as solvents, disinfectants, and key components in the production of alcoholic beverages. Their unique properties include the ability to form hydrogen bonds, which affects their physical characteristics and chemical reactivity.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Alcohol_(chemistry)',
+        isProtected: true,
       },
       0,
     ),
@@ -88,6 +93,7 @@ async function createGroupSampleDocuments() {
         description:
           'Alkane is a type of organic compound consisting of carbon and hydrogen atoms. They have a simple structure with single covalent bonds between carbon atoms, are saturated hydrocarbons (CnH2n+2), and are found in fossil fuels. Their stable structure makes them valuable as energy sources and fuels.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Alkane',
+        isProtected: true,
       },
       1,
     ),
@@ -97,6 +103,7 @@ async function createGroupSampleDocuments() {
         description:
           'Alkene is an organic compound featuring a unique double bond (C=C) between two carbon atoms. The general formula for alkenes is CnH2n. This double bond introduces reactivity, enabling alkenes to undergo addition reactions with other molecules, making them crucial in the synthesis of various organic compounds. They are commonly used in the production of plastics, polymers, and as intermediates in the manufacture of chemicals, such as ethanol and ethylene.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Alkene',
+        isProtected: true,
       },
       2,
     ),
@@ -106,6 +113,7 @@ async function createGroupSampleDocuments() {
         description:
           'Carboxylic Acid is an organic compound characterized by the presence of a carboxyl functional group (-COOH), which consists of a carbonyl group (C=O) and a hydroxyl group (-OH) bonded to the same carbon atom. Carboxylic acids are versatile and crucial in various biological, chemical, and industrial processes. They often act as acids, readily donating protons (H+) and forming carboxylate anions. Common applications include their role as organic solvents, preservatives in food, and intermediates in the synthesis of pharmaceuticals, perfumes, and plastics.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Carboxylic_acid',
+        isProtected: true,
       },
       3,
     ),
@@ -115,6 +123,7 @@ async function createGroupSampleDocuments() {
         description:
           'Amines are organic compounds characterized by the presence of an amino functional group (-NH2). They are derivatives of ammonia (NH3) in which one or more hydrogen atoms have been replaced by organic groups. Amines are important in various chemical reactions, serving as building blocks for amino acids, proteins, and pharmaceuticals. They can be classified as primary, secondary, or tertiary amines based on the number of organic groups attached to the nitrogen atom.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Amine',
+        isProtected: true,
       },
       4,
     ),
@@ -124,6 +133,7 @@ async function createGroupSampleDocuments() {
         description:
           "Esters are organic compounds formed by the reaction of a carboxylic acid and an alcohol. They are characterized by a carbonyl group (C=O) and an ether group (R-O-R'). Esters are known for their pleasant, fruity odors and are often found in essential oils and fragrances. They are crucial in the production of flavorings, perfumes, and plastics.",
         wikiUrl: 'https://en.wikipedia.org/wiki/Ester',
+        isProtected: true,
       },
       5,
     ),
@@ -133,6 +143,7 @@ async function createGroupSampleDocuments() {
         description:
           'Alkynes are unsaturated hydrocarbons containing at least one carbon-carbon triple bond (C≡C). They are valuable in organic chemistry for their ability to participate in various reactions and serve as precursors in the synthesis of complex organic compounds. Alkynes are essential in the production of materials like plastics, adhesives, and pharmaceuticals.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Alkyne',
+        isProtected: true,
       },
       6,
     ),
@@ -142,6 +153,7 @@ async function createGroupSampleDocuments() {
         description:
           'Amides are organic compounds derived from carboxylic acids. They are characterized by the presence of a carbonyl group (C=O) and an amino group (NH2 or NR2) bonded to the same carbon atom. Amides play a vital role in biochemistry, serving as key components in the structure of proteins and peptides. They are also used in the synthesis of various pharmaceuticals, polymers, and agricultural chemicals.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Amide',
+        isProtected: true,
       },
       7,
     ),
@@ -151,6 +163,7 @@ async function createGroupSampleDocuments() {
         description:
           'Lipids are a diverse class of organic compounds that are hydrophobic and insoluble in water. They play various essential roles in living organisms, including energy storage, cell membrane structure, and signaling. Lipids encompass a wide range of molecules, including triglycerides (fats and oils), phospholipids (major components of cell membranes), and sterols (such as cholesterol). Understanding lipids is crucial in the fields of nutrition, biology, and biochemistry.',
         wikiUrl: 'https://en.wikipedia.org/wiki/Lipid',
+        isProtected: true,
       },
       8,
     ),

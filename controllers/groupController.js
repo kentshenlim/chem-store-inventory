@@ -96,6 +96,12 @@ module.exports = {
       next(err);
       return;
     }
+    if (groupOld.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
     res.render('group_create', {
       title: `Edit: ${groupOld.name.toUpperCase()}`,
       group: groupOld,
@@ -105,6 +111,23 @@ module.exports = {
 
   update_post: [
     ...formValidatorFunctions,
+    asyncHandler(async (req, res, next) => {
+      const { id } = req.params;
+      const groupOld = await Group.findById(id).exec();
+      if (!groupOld) {
+        const err = new Error('ID does not match any group in database');
+        err.status = 404;
+        next(err);
+        return;
+      }
+      if (groupOld.isProtected) {
+        res.render('access_denied', {
+          title: 'Access Denied',
+        });
+        return;
+      }
+      next();
+    }),
     asyncHandler(async (req, res, next) => {
       const errors = validationResult(req);
       const group = new Group({

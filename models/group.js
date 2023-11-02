@@ -20,6 +20,10 @@ const groupSchema = new Schema({
       message: () => 'wikiUrl must start with https://',
     },
   },
+  isProtected: { // Does not allow editing sample documents
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Virtuals
