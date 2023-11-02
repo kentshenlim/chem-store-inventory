@@ -30,3 +30,8 @@ block content
                 span(class='font-semibold text-orange-500 indent')= product.numberInStock
             else 
                 span(class='font-semibold text-green-500 indent')= product.numberInStock
+
+    section 
+        div(class='flex justify-end')
+            a(href='/product/' + product._id + '/delete' class='inline-block text-warning-color')
+                button(type='button' class='deleteBtn') Delete

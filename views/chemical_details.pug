@@ -37,3 +37,8 @@ block content
                             a(href='/product/' + product._id class='text-link-color') #{product.sku}
             else
                 p No product of this chemical exists in the record.
+
+    section 
+        div(class='flex justify-end')
+            a(href='/chemical/' + chemical._id + '/delete' class='inline-block text-warning-color')
+                button(type='button' class='deleteBtn') Delete
