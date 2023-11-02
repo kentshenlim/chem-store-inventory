@@ -18,7 +18,8 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: CUD
+- TODO: UD
+- TODO: change create to update keyword
 - TODO: disallow deletion for sample data
 - TODO: responsive
 - TODO: sidebar hidden at LHS at mobile, expand at wide screen
