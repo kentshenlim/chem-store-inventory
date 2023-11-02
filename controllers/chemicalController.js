@@ -4,6 +4,39 @@ const Chemical = require('../models/chemical');
 const Product = require('../models/product');
 const Group = require('../models/group');
 
+// Validator functions that will be used when creating and updating Chemical
+// instance
+const formValidatorFunctions = [
+  (req, res, next) => {
+    if (!Array.isArray(req.body.groups)) {
+      if (req.body.groups === undefined) req.body.groups = [];
+      else req.body.groups = new Array(req.body.groups);
+    }
+    next();
+  },
+  body('name')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Chemical name must not be empty')
+    .isLength({ max: 100 })
+    .withMessage('Chemical group name cannot have more than 100 characters'),
+  body('formula')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Chemical formula must not be empty')
+    .isLength({ max: 100 })
+    .withMessage('Chemical formula cannot have more than 100 characters')
+    .escape(), // Need to escape because will have to use unescaped version in pug
+  body('casNo')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('CAS registry number must not be empty')
+    .isLength({ max: 12 })
+    .withMessage('CAS registry number cannot have more than 12 characters'),
+  body('mW').trim().isNumeric().withMessage('Molar mass must be number'),
+];
+
+// Middlewares
 module.exports = {
   list_get: asyncHandler(async (req, res, next) => {
     // const allChemicals = await Chemical.find({}, { groups: 0 }).sort({ name:
@@ -50,36 +83,7 @@ module.exports = {
   }),
 
   create_post: [
-    (req, res, next) => {
-      if (!Array.isArray(req.body.groups)) {
-        if (req.body.groups === undefined) req.body.groups = [];
-        else req.body.groups = new Array(req.body.groups);
-      }
-      next();
-    },
-    body('name')
-      .trim()
-      .isLength({ min: 1 })
-      .withMessage('Chemical name must not be empty')
-      .isLength({ max: 100 })
-      .withMessage('Chemical group name cannot have more than 100 characters'),
-    body('formula')
-      .trim()
-      .isLength({ min: 1 })
-      .withMessage('Chemical formula must not be empty')
-      .isLength({ max: 100 })
-      .withMessage('Chemical formula cannot have more than 100 characters')
-      .escape(), // Need to escape because will have to use unescaped version in pug
-    body('casNo')
-      .trim()
-      .isLength({ min: 1 })
-      .withMessage('CAS registry number must not be empty')
-      .isLength({ max: 12 })
-      .withMessage('CAS registry number cannot have more than 12 characters'),
-    body('mW')
-      .trim()
-      .isNumeric()
-      .withMessage('Molar mass must be number'),
+    ...formValidatorFunctions,
     asyncHandler(async (req, res, next) => {
       const errors = validationResult(req);
       const chemical = new Chemical({
@@ -114,7 +118,35 @@ module.exports = {
   ],
 
   update_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET chemical update form');
+    const { id } = req.params;
+    const [chemicalOld, allGroups] = await Promise.all([
+      Chemical.findById(id).exec(),
+      Group.find({}, { name: 1 }).sort({ name: 1 }).collation({ locale: 'en', strength: 2 }).exec(),
+    ]);
+    if (!chemicalOld) {
+      const err = new Error('ID does not match any chemical in database');
+      err.status = 404;
+      next(err);
+      return;
+    }
+    if (chemicalOld.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    // Mark selected group before rendering to populate groups with selected
+    // groups
+    const checkedGroups = chemicalOld.groups.map((_id) => _id.toString());
+    for (let i = 0; i < allGroups.length; i += 1) {
+      const group = allGroups[i];
+      if (checkedGroups.indexOf(group._id.toString()) !== -1) group.checked = true;
+    }
+    res.render('chemical_create', {
+      title: `Update Chemical: ${chemicalOld.name.toUpperCase()}`,
+      allGroups,
+      chemical: chemicalOld,
+    });
   }),
 
   update_post: asyncHandler(async (req, res, next) => {

@@ -50,7 +50,7 @@ block content
                         sup -1
 
 
-                button(type='submit' class='formSubmitBtn') Create
+                button(type='submit' class='formSubmitBtn')= isUpdating ? 'Update' : 'Create'
         
 
     script.
