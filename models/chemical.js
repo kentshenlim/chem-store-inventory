@@ -30,6 +30,10 @@ const chemicalSchema = new Schema({
     ref: 'Group',
     required: true,
   }],
+  isProtected: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Virtuals

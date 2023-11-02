@@ -146,12 +146,61 @@ module.exports = {
       title: `Update Chemical: ${chemicalOld.name.toUpperCase()}`,
       allGroups,
       chemical: chemicalOld,
+      isUpdating: true,
     });
   }),
 
-  update_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: POST chemical update form');
-  }),
+  update_post: [
+    ...formValidatorFunctions,
+    asyncHandler(async (req, res, next) => {
+      const { id } = req.params;
+      const chemicalOld = await Chemical.findById(id).exec();
+      if (!chemicalOld) {
+        const err = new Error('ID does not match any chemical in database');
+        err.status = 404;
+        next(err);
+        return;
+      }
+      if (chemicalOld.isProtected) {
+        res.render('access_denied', {
+          title: 'Access Denied',
+        });
+        return;
+      }
+      next();
+    }),
+    asyncHandler(async (req, res, next) => {
+      const errors = validationResult(req);
+      const chemical = new Chemical({
+        name: req.body.name,
+        formula: req.body.formula,
+        casNo: req.body.casNo,
+        mW: req.body.mW,
+        groups: req.body.groups,
+        _id: req.params.id,
+      });
+      if (!errors.isEmpty()) {
+        const allGroups = await Group.find({}, { name: 1 })
+          .sort({ name: 1 })
+          .exec();
+        const checkedGroups = req.body.groups;
+        for (let i = 0; i < allGroups.length; i += 1) {
+          const group = allGroups[i];
+          if (checkedGroups.indexOf(group._id.toString()) !== -1) group.checked = true;
+        }
+        res.render('chemical_create', {
+          title: 'Create New Chemical',
+          errors: errors.mapped(),
+          allGroups,
+          chemical,
+          isUpdating: true,
+        });
+        return;
+      }
+      const updatedChemical = await Chemical.findByIdAndUpdate(req.params.id, chemical, {}).exec();
+      res.redirect(updatedChemical.url);
+    }),
+  ],
 
   delete_get: asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: GET chemical delete form');
