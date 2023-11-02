@@ -19,8 +19,6 @@ Mobile-first inventory app written to practice DB manipulation.
 ## TODO
 
 - TODO: D
-- TODO: change create to new
-- TODO: change create to update keyword
 - TODO: disallow deletion for sample data
 - TODO: back button more intuitive than home and list
 - TODO: responsive
