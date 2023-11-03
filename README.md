@@ -18,9 +18,7 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: D
 - TODO: issue with updating product leads to duplicated SKU when clicked save directly
-- TODO: disallow deletion for sample data
 - TODO: back button more intuitive than home and list
 - TODO: responsive
 - TODO: sidebar hidden at LHS at mobile, expand at wide screen

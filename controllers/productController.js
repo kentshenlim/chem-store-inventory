@@ -195,10 +195,38 @@ module.exports = {
   ],
 
   delete_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET product delete form');
+    const { id } = req.params;
+    const product = await Product.findById(id).exec();
+    if (!product) {
+      res.redirect('/product');
+      return;
+    }
+    if (product.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    res.render('product_delete', {
+      title: `Delete Product: ${product.sku}`,
+      product,
+    });
   }),
 
   delete_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: POST product delete form');
+    const { id } = req.params;
+    const product = await Product.findById(id).exec();
+    if (!product) {
+      res.redirect('/product');
+      return;
+    }
+    if (product.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    await Product.findByIdAndDelete(req.body.deleteId).exec();
+    res.redirect('/product');
   }),
 };
