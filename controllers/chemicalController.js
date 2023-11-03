@@ -203,10 +203,42 @@ module.exports = {
   ],
 
   delete_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET chemical delete form');
+    const { id } = req.params;
+    const [chemical, chemicalProducts] = await Promise.all([
+      Chemical.findById(id).exec(),
+      Product.find({ chemical: id }, { sku: 1 }).exec(),
+    ]);
+    if (!chemical) {
+      res.redirect('/chemical');
+      return;
+    }
+    if (chemical.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    res.render('chemical_delete', {
+      title: `Delete Chemical: ${chemical.name.toUpperCase()}`,
+      chemical,
+      chemicalProducts,
+    });
   }),
 
   delete_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: POST chemical delete form');
+    const { id } = req.params;
+    const chemical = await Chemical.findById(id);
+    if (!chemical) {
+      res.redirect('/chemical');
+      return;
+    }
+    if (chemical.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    await Chemical.findByIdAndRemove(req.body.deleteId).exec();
+    res.redirect('/chemical');
   }),
 };

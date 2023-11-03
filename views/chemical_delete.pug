@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    section
+        div(class='flex justify-between') 
+            a(href='/chemical/' + chemical._id class='text-link-color') &#128896; Back
+
+    section
+        div
+            if (chemicalProducts && chemicalProducts.length)
+                h3 Cannot Delete
+                p(class='indent') There are products under this chemical. Please delete these products first, or alternatively, modify their "Chemical" field.
+                ul(class='indent')
+                    each product in chemicalProducts
+                        li(class='list-disc list-inside')
+                            a(href=product.url class='text-link-color')= product.sku
+            else
+                h3 Delete
+                form(method='post' action='')
+                    p Are you sure you want to delete the chemical #[strong #{chemical.name}]? 
+                        span(class='text-warning-color') This cannot be undone!
+                    input(type='hidden' name='deleteId' value=chemical._id required=true)
+                    div(class='cancelDeleteRow')
+                        button(type='button')
+                            a(href='/chemical/' + chemical._id)  Cancel
+                        button(type='submit') Delete
+
+
