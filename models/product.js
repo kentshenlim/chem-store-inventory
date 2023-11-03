@@ -42,6 +42,9 @@ const productSchema = new Schema({
     type: Date,
     default: new Date(),
   },
+  sds: {
+    type: Schema.Types.Buffer, // For pdf, size limited by multer
+  },
   isProtected: {
     type: Boolean,
     default: false,

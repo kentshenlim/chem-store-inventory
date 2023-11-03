@@ -21,4 +21,6 @@ router.get('/:id/delete', controller.delete_get);
 
 router.post('/:id/delete', controller.delete_post);
 
+router.get('/:id/sds', controller.sds_get);
+
 module.exports = router;

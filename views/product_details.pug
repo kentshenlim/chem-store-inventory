@@ -31,6 +31,14 @@ block content
             else 
                 span(class='font-semibold text-green-500 indent')= product.numberInStock
 
+    section
+        div 
+            h3 SDS
+            if (!product.sds)
+                p(class='indent') No SDS uploaded
+            else
+                a(href=`/product/${product._id}/sds` target='_blank' class='text-link-color indent') Link
+
     section 
         div(class='flex justify-end')
             a(href='/product/' + product._id + '/delete' class='inline-block text-warning-color')

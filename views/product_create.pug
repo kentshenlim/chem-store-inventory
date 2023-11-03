@@ -7,7 +7,7 @@ block content
 
     section 
         div 
-            form(method='post' action='')
+            form(method='post' action='' enctype='multipart/form-data')
                 label(for='chemical' class='block compulsoryField') Chemical
                 select#chemical(name='chemical' size="4" class='px-0 inputText' required=true)
                     each chemical in allChemicals
@@ -59,6 +59,6 @@ block content
                 if (errors && errors.sds)
                     p(class='text-sm text-warning-color')!= errors.sds.msg
                 else
-                    p(class='text-sm') Safety data sheet of the product, size &lt; 1.5 MB
+                    p(class='text-sm') Safety data sheet of the product, size &lt; 1 MB
 
                 button(type='submit' class='formSubmitBtn')= isUpdating ? 'Save' : 'Create'

@@ -1,7 +1,16 @@
 const asyncHandler = require('express-async-handler');
-const { body, validationResult, oneOf } = require('express-validator');
+const { body, validationResult } = require('express-validator');
+const multer = require('multer');
 const Product = require('../models/product');
 const Chemical = require('../models/chemical');
+
+// For parsing multipart form later, multipart form should be parsed before
+// validation
+const sdsMaxSize = 1 * 10 ** 6; // 1 MB
+const upload = multer({
+  storage: multer.memoryStorage(), // Store in memory, not disk, as buffer
+  limits: { fileSize: sdsMaxSize }, // 1 MB
+});
 
 // Validator functions that will be used when creating and updating Product
 // instance
@@ -94,7 +103,8 @@ module.exports = {
   }),
 
   create_post: [
-    ...formValidatorFunctions,
+    upload.single('sds'), // Multer must be used before validation to parse multipart form correctly
+    ...formValidatorFunctions, // Multipart form has been parsed, can validate the body as usual
     asyncHandler(async (req, res, next) => {
       const errors = validationResult(req);
       // Compulsory field first
@@ -107,6 +117,7 @@ module.exports = {
       if (req.body.packSize) productObj.packSize = req.body.packSize;
       if (req.body.price) productObj.price = req.body.price;
       if (req.body.numberInStock) productObj.numberInStock = req.body.numberInStock;
+      if (req.file) productObj.sds = req.file.buffer; // Store the buffer into DB
       const product = new Product(productObj);
       if (!errors.isEmpty()) {
         const allChemicals = await Chemical.find({}, { name: 1 }).sort({ name: 1 }).collation({ locale: 'en', strength: 2 }).exec();
@@ -233,5 +244,25 @@ module.exports = {
     }
     await Product.findByIdAndDelete(req.body.deleteId).exec();
     res.redirect('/product');
+  }),
+
+  sds_get: asyncHandler(async (req, res, next) => {
+    // Send PDF
+    const product = await Product.findById(req.params.id, { sds: 1 });
+    if (!product) {
+      const err = new Error('ID does not match any product in database');
+      err.status = 404;
+      next(err);
+      return;
+    }
+    const pdfBuffer = product.sds;
+    if (!pdfBuffer) {
+      const err = new Error('Current product does not have sds in record');
+      err.status = 404;
+      next(err);
+      return;
+    }
+    res.contentType('application/pdf');
+    res.send(pdfBuffer);
   }),
 };
