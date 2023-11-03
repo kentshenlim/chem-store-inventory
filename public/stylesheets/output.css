@@ -687,6 +687,8 @@ label:not(:first-child) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .deleteBtn:hover {
@@ -695,6 +697,71 @@ label:not(:first-child) {
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity));
+}
+
+.cancelDeleteRow {
+  /* div > ((button > a) + button)*/
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cancelDeleteRow a {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.25rem;
+  display: block;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.cancelDeleteRow a:active {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cancelDeleteRow a {
+  margin: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.cancelDeleteRow>button:not(:first-child) {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.25rem;
+  display: block;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.cancelDeleteRow>button:not(:first-child):active {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cancelDeleteRow>button:not(:first-child) {
+  margin: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .absolute {
@@ -742,6 +809,10 @@ label:not(:first-child) {
 
 .inline-flex {
   display: inline-flex;
+}
+
+.hidden {
+  display: none;
 }
 
 .min-h-screen {
@@ -984,7 +1055,7 @@ Padding with other sizes should be minimized.
 [8] For styling of form elements mostly use component class
 [9] For form, store unescaped data in DB, and always render escaped data if the
 data is from client
-[10] Form validation must be carried out in all three stages: client-side (form
+[10] Form validation must be carried out at all three stages: client-side (form
 element), server side (express-validator) and DB-side (mongoose). For maxLength,
 better use server-sides; client-side bad UI (cannot enter more char).
 */

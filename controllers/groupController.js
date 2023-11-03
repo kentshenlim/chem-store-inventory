@@ -151,10 +151,44 @@ module.exports = {
   ],
 
   delete_get: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: GET group delete form');
+    const { id } = req.params;
+    const [group, groupChemicals] = await Promise.all([
+      Group.findById(id).exec(),
+      Chemical.find({ groups: id }, { name: 1 }).sort({ name: 1 }).collation({ locale: 'en', strength: 2 }).exec(),
+    ]);
+    if (!group) { // If group to be deleted does not exist, just redirect to the list (job done)
+      res.redirect('/group');
+      return;
+    }
+    if (group.isProtected) { // If group to be deleted is sample document
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    res.render('group_delete', {
+      title: `Delete Group: ${group.name.toUpperCase()}`,
+      group,
+      groupChemicals,
+    });
   }),
 
   delete_post: asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: POST group delete form');
+    // Need to check again; someone might have added new chemical after GET
+    // before POST
+    const { id } = req.params;
+    const group = await Group.findById(id).exec();
+    if (!group) {
+      res.redirect('/group');
+      return;
+    }
+    if (group.isProtected) {
+      res.render('access_denied', {
+        title: 'Access Denied',
+      });
+      return;
+    }
+    await Group.findByIdAndRemove(req.body.deleteId).exec();
+    res.redirect('/group');
   }),
 };

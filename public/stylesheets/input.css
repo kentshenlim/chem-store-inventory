@@ -53,7 +53,13 @@
     @apply block px-3 py-2 mx-auto mt-5 font-semibold rounded-lg bg-slate-400 active:scale-95;
   }
   .deleteBtn {
-    @apply px-4 py-1 font-semibold border rounded-md bg-slate-200/60 border-neutral-400 hover:border-none hover:bg-red-600 hover:text-slate-300;
+    @apply px-4 py-1 font-semibold border rounded-md bg-slate-200/60 border-neutral-400 hover:border-none hover:bg-red-600 hover:text-slate-300 text-warning-color;
+  }
+  .cancelDeleteRow {
+    /* div > ((button > a) + button)*/
+    @apply flex mt-3 justify-evenly;
+    @apply [&_a]:m-0 [&_a]:text-white [&_a]:bg-gray-400 [&_a]:formSubmitBtn;
+    @apply [&>button:not(:first-child)]:formSubmitBtn [&>button:not(:first-child)]:m-0 [&>button:not(:first-child)]:text-white [&>button:not(:first-child)]:bg-red-600;
   }
 }
 
@@ -88,7 +94,7 @@ Padding with other sizes should be minimized.
 [8] For styling of form elements mostly use component class
 [9] For form, store unescaped data in DB, and always render escaped data if the
 data is from client
-[10] Form validation must be carried out in all three stages: client-side (form
+[10] Form validation must be carried out at all three stages: client-side (form
 element), server side (express-validator) and DB-side (mongoose). For maxLength,
 better use server-sides; client-side bad UI (cannot enter more char).
 */

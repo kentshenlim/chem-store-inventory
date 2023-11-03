@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    section 
+        div(class='flex justify-between') 
+            a(href='/group/' + group._id class='text-link-color') &#128896; Back
+
+    section
+        div
+            if (groupChemicals && groupChemicals.length)
+                h3 Cannot Delete
+                p(class='indent') There are chemicals containing this functional group. Please delete these chemicals first, or alternatively, remove the functional group #[strong "#{group.name}"] from them.
+                ul(class='indent')
+                    each chemical in groupChemicals
+                        li(class='list-disc list-inside')
+                            a(href=chemical.url class='text-link-color')= chemical.name
+            else
+                h3 Delete
+                form(method='post' action='') 
+                    p Are you sure you want to delete the group #[strong #{group.name}]? 
+                        span(class='text-warning-color') This cannot be undone!
+                    input(type='hidden' name='deleteId' value=group._id required=true)
+                    div(class='cancelDeleteRow')
+                        button(type='button')
+                            a(href='/group/' + group._id)  Cancel
+                        button(type='submit') Delete
