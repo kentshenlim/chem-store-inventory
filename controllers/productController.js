@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const { body, validationResult } = require('express-validator');
+const { body, validationResult, oneOf } = require('express-validator');
 const Product = require('../models/product');
 const Chemical = require('../models/chemical');
 
@@ -9,9 +9,14 @@ const formValidatorFunctions = [
   body('chemical', 'Chemical must be specified').trim().isLength({ min: 1 }),
   body('sku')
     .trim()
-    .custom(async (value) => {
+    .custom(async (value, { req }) => {
       const exist = await Product.findOne({ sku: value }).exec();
-      if (exist) throw new Error('SKU is already in use');
+      if (exist) {
+        if (!req.params.id) throw new Error('SKU is already in use'); // Create, must not exist
+        // Otherwise, updating, will only accept if same document (click update
+        // then save without changing)
+        if (req.params.id !== exist._id.toString()) throw new Error('SKU is already in use');
+      }
     })
     .withMessage('The SKU already exists in the database; create a new one.')
     .isLength({ min: 1 })
