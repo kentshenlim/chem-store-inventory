@@ -18,9 +18,9 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
+- TODO: upload SDS
 - TODO: back button more intuitive than home and list
 - TODO: responsive
 - TODO: sidebar hidden at LHS at mobile, expand at wide screen
 - TODO: dark mode toggle
 - TODO: turn off spacing of access denied when screen large enough
-- TODO: upload SDS
