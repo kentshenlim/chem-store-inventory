@@ -105,6 +105,12 @@ module.exports = {
   create_post: [
     upload.single('sds'), // Multer must be used before validation to parse multipart form correctly
     ...formValidatorFunctions, // Multipart form has been parsed, can validate the body as usual
+    body('sds', 'File type must be pdf') // Extra validator to check file type
+      .custom((_, { req }) => {
+        if (!req.file) return true; // Accept no file
+        const { mimetype } = req.file;
+        return mimetype === 'application/pdf';
+      }),
     asyncHandler(async (req, res, next) => {
       const errors = validationResult(req);
       // Compulsory field first
