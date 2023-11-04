@@ -23,6 +23,7 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
+- TODO: populate sample document with PDF
 - TODO: back button more intuitive than home and list
 - TODO: error page too ugly
 - TODO: responsive
