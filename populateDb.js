@@ -14,6 +14,8 @@ const userArgs = process.argv.slice(2);
 
 // Get models to manipulate with collections
 const mongoose = require('mongoose');
+const fs = require('fs/promises');
+const path = require('path');
 const Chemical = require('./models/chemical');
 const Product = require('./models/product');
 const Group = require('./models/group');
@@ -52,10 +54,11 @@ async function createProduct({
   packSize,
   price,
   added,
+  sds,
   isProtected,
 }, idx) {
   const product = new Product({
-    chemical, sku, description, numberInStock, packSize, price, added, isProtected,
+    chemical, sku, description, numberInStock, packSize, price, added, isProtected, sds,
   });
   await product.save();
   products[idx] = product;
@@ -355,6 +358,20 @@ async function createChemicalSampleDocuments() {
 }
 
 async function createProductSampleDocuments() {
+  console.log('Reading sample SDS');
+  const sampleSds = await Promise.all([
+    fs.readFile(path.join(__dirname, 'sample_sds/product_00.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_01.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_02.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_03.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_05.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_06.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_08.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_09.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_10.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_11.pdf')),
+    fs.readFile(path.join(__dirname, 'sample_sds/product_12.pdf')),
+  ]);
   console.log('Adding products');
   await Promise.all([
     createProduct(
@@ -365,6 +382,7 @@ async function createProductSampleDocuments() {
         numberInStock: 201,
         packSize: '1 L',
         price: 'USD 182.27',
+        sds: sampleSds[0],
         isProtected: true,
       },
       0,
@@ -377,6 +395,7 @@ async function createProductSampleDocuments() {
         numberInStock: 102,
         packSize: '500 mL',
         price: 'USD 110.70',
+        sds: sampleSds[1],
         isProtected: true,
       },
       1,
@@ -390,6 +409,7 @@ async function createProductSampleDocuments() {
         numberInStock: 42,
         packSize: '3x 1.2 mL',
         price: 'USD 57.44',
+        sds: sampleSds[2],
         isProtected: true,
       },
       2,
@@ -397,11 +417,12 @@ async function createProductSampleDocuments() {
     createProduct(
       {
         chemical: chemicals[5],
-        sku: '81926-94-5',
+        sku: '1224620',
         description: 'United States Pharmacopeia (USP) Reference Standard',
         numberInStock: 3,
         packSize: '500 mg',
         price: 'USD 1034.53',
+        sds: sampleSds[3],
         isProtected: true,
       },
       3,
@@ -426,6 +447,7 @@ async function createProductSampleDocuments() {
         numberInStock: 17,
         packSize: '50 g',
         price: 'USD 68.65',
+        sds: sampleSds[4],
         isProtected: true,
       },
       5,
@@ -439,6 +461,7 @@ async function createProductSampleDocuments() {
         numberInStock: 3,
         packSize: '1 g',
         price: 'USD 312.80',
+        sds: sampleSds[5],
         isProtected: true,
       },
       6,
@@ -463,6 +486,7 @@ async function createProductSampleDocuments() {
         numberInStock: 24,
         packSize: '5 mg',
         price: 'USD 574.58',
+        sds: sampleSds[6],
         isProtected: true,
       },
       8,
@@ -475,6 +499,7 @@ async function createProductSampleDocuments() {
         numberInStock: 73,
         packSize: '5 g',
         price: 'USD 52.90',
+        sds: sampleSds[7],
         isProtected: true,
       },
       9,
@@ -487,6 +512,7 @@ async function createProductSampleDocuments() {
         numberInStock: 2,
         packSize: '100 g',
         price: 'USD 1410.73',
+        sds: sampleSds[8],
         isProtected: true,
       },
       10,
@@ -499,6 +525,7 @@ async function createProductSampleDocuments() {
         numberInStock: 7,
         packSize: '25 g',
         price: 'USD 571.43',
+        sds: sampleSds[9],
         isProtected: true,
       },
       11,
@@ -512,6 +539,7 @@ async function createProductSampleDocuments() {
         numberInStock: 9,
         packSize: '500 mg',
         price: 'USD 123.65',
+        sds: sampleSds[10],
         isProtected: true,
       },
       12,
