@@ -817,6 +817,18 @@ label:not(:first-child) {
   right: 0px;
 }
 
+.order-1 {
+  order: 1;
+}
+
+.-order-first {
+  order: 9999;
+}
+
+.order-first {
+  order: -9999;
+}
+
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -860,12 +872,36 @@ label:not(:first-child) {
   display: none;
 }
 
+.h-full {
+  height: 100%;
+}
+
+.h-44 {
+  height: 11rem;
+}
+
+.max-h-40 {
+  max-height: 10rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
 
 .w-screen {
   width: 100vw;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .select-none {
@@ -889,6 +925,11 @@ label:not(:first-child) {
 .columns-2 {
   -moz-columns: 2;
        columns: 2;
+}
+
+.columns-auto {
+  -moz-columns: auto;
+       columns: auto;
 }
 
 .flex-col {
@@ -957,6 +998,16 @@ label:not(:first-child) {
 
 .border-b-2 {
   border-bottom-width: 2px;
+}
+
+.border-blue-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(30 64 175 / var(--tw-border-opacity));
+}
+
+.border-red-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(153 27 27 / var(--tw-border-opacity));
 }
 
 .border-transparent {
@@ -1134,6 +1185,11 @@ label:not(:first-child) {
   color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
+.\[column-fill\:auto\] {
+  -moz-column-fill: auto;
+       column-fill: auto;
+}
+
 /* For multiple select tag from library */
 
 .mult-select-tag {
@@ -1191,6 +1247,38 @@ better use server-sides; client-side bad UI (cannot enter more char).
 
 :is(.dark .dark\:hidden) {
   display: none;
+}
+
+@media not all and (min-width: 768px) {
+  .max-md\:max-w-2xl {
+    max-width: 42rem;
+  }
+}
+
+@media (min-width: 430px) {
+  .xs\:columns-3 {
+    -moz-columns: 3;
+         columns: 3;
+  }
+}
+
+@media (min-width: 640px) {
+  .sm\:columns-6 {
+    -moz-columns: 6;
+         columns: 6;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:columns-6 {
+    -moz-columns: 6;
+         columns: 6;
+  }
+
+  .md\:columns-3 {
+    -moz-columns: 3;
+         columns: 3;
+  }
 }
 
 .\[\&\:not\(\:first-child\)\]\:mt-2:not(:first-child) {

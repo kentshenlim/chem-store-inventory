@@ -27,3 +27,4 @@ Mobile-first inventory app written to practice DB manipulation.
 - TODO: sidebar hidden at LHS at mobile, expand at wide screen
 - TODO: dark mode toggle
 - TODO: turn off spacing of access denied when screen large enough
+- TODO: logo
