@@ -56,11 +56,20 @@ block content
 
                 label(for='sds' class='block') SDS
                 input#sds(type='file' name='sds' class='inputText')
+                div(class='flex items-center [&>label]:mt-0')
+                    input#noSds(type='checkbox', name='noSds' class='mr-3 indent')
+                    label(for='noSds' class='text-base font-normal') Do not include SDS for this product
                 if (errors && errors.sds)
                     p(class='text-sm text-warning-color')!= errors.sds.msg
                 else if (errors && product.sds)
                     p(class='text-sm text-warning-color') Please reupload SDS file
                 else
-                    p(class='text-sm') Safety data sheet of the product, PDF only, size &lt; 1 MB
+                    if (isUpdating)
+                        ul(class='[&>li]:text-sm [&>li]:list-inside [&>li]:list-disc')
+                            li Leave empty to keep uploaded file (if any)
+                            li Upload new file to replace file in database
+                            li Check checkbox to remove file in database
+                    else
+                        p(class='text-sm') Safety data sheet of the product, PDF only, size &lt; 1 MB
 
                 button(type='submit' class='formSubmitBtn')= isUpdating ? 'Save' : 'Create'

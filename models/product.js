@@ -49,6 +49,9 @@ const productSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  $unset: { // To remove sds pdf
+    type: Object,
+  },
 });
 
 // Virtuals

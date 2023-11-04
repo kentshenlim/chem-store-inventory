@@ -776,12 +776,24 @@ label:not(:first-child) {
   inset: 0px;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
 
 .mt-auto {
   margin-top: auto;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
 }
 
 .line-clamp-3 {
@@ -813,6 +825,10 @@ label:not(:first-child) {
 
 .hidden {
   display: none;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .min-h-screen {
@@ -889,6 +905,11 @@ label:not(:first-child) {
 
 .border-transparent {
   border-color: transparent;
+}
+
+.border-red-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 113 113 / var(--tw-border-opacity));
 }
 
 .border-b-slate-400 {
@@ -977,12 +998,21 @@ label:not(:first-child) {
   line-height: 1.25rem;
 }
 
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .capitalize {
@@ -1073,6 +1103,10 @@ better use server-sides; client-side bad UI (cannot enter more char).
   padding-right: 0.5rem;
 }
 
+.\[\&\>label\]\:mt-0>label {
+  margin-top: 0px;
+}
+
 .\[\&\>li\]\:list-inside>li {
   list-style-position: inside;
 }
@@ -1084,6 +1118,11 @@ better use server-sides; client-side bad UI (cannot enter more char).
 .\[\&\>li\]\:break-inside-avoid>li {
   -moz-column-break-inside: avoid;
        break-inside: avoid;
+}
+
+.\[\&\>li\]\:text-sm>li {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .\[\&_img\]\:mx-auto img {

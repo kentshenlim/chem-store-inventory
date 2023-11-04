@@ -122,7 +122,7 @@ module.exports = {
       if (req.body.packSize) productObj.packSize = req.body.packSize;
       if (req.body.price) productObj.price = req.body.price;
       if (req.body.numberInStock) productObj.numberInStock = req.body.numberInStock;
-      if (req.file) productObj.sds = req.file.buffer; // Store the buffer into DB
+      if (req.file && !req.body.noSds) productObj.sds = req.file.buffer; // Store the buffer into DB
       const product = new Product(productObj);
       if (!errors.isEmpty()) {
         const allChemicals = await Chemical.find({}, { name: 1 }).sort({ name: 1 }).collation({ locale: 'en', strength: 2 }).exec();
@@ -166,6 +166,7 @@ module.exports = {
   }),
 
   update_post: [
+    upload.single('sds'),
     ...formValidatorFunctions,
     asyncHandler(async (req, res, next) => {
       const { id } = req.params;
@@ -195,6 +196,11 @@ module.exports = {
       if (req.body.packSize) productObj.packSize = req.body.packSize;
       if (req.body.price) productObj.price = req.body.price;
       if (req.body.numberInStock) productObj.numberInStock = req.body.numberInStock;
+      // Remove any SDS
+      if (req.body.noSds) productObj.$unset = { sds: 1 };
+      // Not removing, and replacing
+      else if (req.file) productObj.sds = req.file.buffer;
+      // Otherwise, not removing, not replacing, do nothing, so no need update
       const product = new Product(productObj);
       if (!errors.isEmpty()) {
         const allChemicals = await Chemical.find({}, { name: 1 })
