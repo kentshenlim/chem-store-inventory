@@ -2,11 +2,12 @@ extends layout
 
 block content
     - const allProducts = paginateProducts.docs;
+    - const firstDoc = 1 + (paginateProducts.page - 1) * paginateProducts.limit;
 
     section 
         div(class='flex justify-between') 
-            a(href='/' class='text-link-color') &#128896; Home
-            a(href='/product/create' class='text-link-color') Create New &#128898;
+            a(href='/' class='text-link-color') Home
+            a(href='/product/create' class='text-link-color') Create New
             
     section
         div
@@ -31,9 +32,9 @@ block content
         if (allProducts && allProducts.length)
             section
                 div
-                    p Showing #{allProducts.length} of #{paginateProducts.totalDocs} products.
+                    p Showing #{firstDoc} – #{firstDoc + allProducts.length - 1} of #{paginateProducts.totalDocs} products.
 
-            section
+            section(class='border-b-0 dividerBottom')
                 div(class='flex justify-center gap-x-5') 
                     if (paginateProducts.hasPrevPage)
                         if (paginateProducts.prevPage != 1)
@@ -46,4 +47,3 @@ block content
                         if (paginateProducts.nextPage != paginateProducts.totalPages)
                             | ...
                             a(href='/product/page' + paginateProducts.totalPages class='text-link-color') #{paginateProducts.totalPages}
-

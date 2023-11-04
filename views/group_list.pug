@@ -3,15 +3,15 @@ extends layout
 block content
     section 
         div(class='flex justify-between') 
-            a(href='/' class='text-link-color') &#128896; Home
-            a(href='/group/create' class='text-link-color') Create New &#128898;
+            a(href='/' class='text-link-color') Home
+            a(href='/group/create' class='text-link-color') Create New
 
-    section 
+    section(class='border-b-0 dividerBottom') 
         div 
             if (allGroups && allGroups.length)
                 ul
                 each group in allGroups
-                    li(class='list-none [&:not(:first-child)]:mt-3 flex flex-col items-start border indent py-2 border-transparent border-b-slate-400 [&>:not(:first-child)]:px-2')
+                    li(class='list-none flex flex-col items-start border indent py-2 border-transparent border-b-slate-400 [&>:not(:first-child)]:px-2 odd:bg-slate-200')
                         p(class='text-lg font-semibold capitalize') #{group.name}
                         p(class='line-clamp-3') #{group.description}
                         a(href='/group/' + group._id class='text-link-color') Inspect
@@ -21,6 +21,3 @@ block content
                                 | #[em Wiki ]
             else 
                 p Oops, it seems like the record is empty. Please create one to add to it.
-
-
-

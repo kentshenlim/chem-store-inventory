@@ -3,16 +3,16 @@ extends layout
 block content
     section 
         div(class='flex justify-between') 
-            a(href='/product/' + product._id class='text-link-color') &#128896; Back
+            a(href='javascript:history.back()' class='text-link-color') Back
 
-    section
+    section(class='border-b-0 dividerBottom')
         div
             h3 Delete
             form(method='post' action='')
-                p Are you sure you want to delete the product SKU: #[strong #{product.sku}]? 
-                    span(class='text-warning-color') This cannot be undone!
+                p(class='font-medium') Are you sure you want to delete the product SKU: #{product.sku}? 
+                p This item will be deleted immediately and permanently. You can't undo this action.
                 input(type='hidden' name='deleteId' value=product._id required=true)
                 div(class='cancelDeleteRow')
                     button(type='button')
-                        a(href='/product/' + product._id)  Cancel
+                        a(href='javascript:history.back()')  Cancel
                     button(type='submit') Delete

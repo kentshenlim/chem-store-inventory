@@ -3,9 +3,9 @@ extends layout
 block content
     section 
         div(class='flex justify-between') 
-            a(href='/' class='text-link-color') &#128896; Home
+            a(href='javascript:history.back()' class='text-link-color') Back
 
-    section 
+    section(class='border-b-0 dividerBottom')
         div 
             form(method='post' action='' enctype='multipart/form-data')
                 label(for='chemical' class='block compulsoryField') Chemical
@@ -73,3 +73,4 @@ block content
                         p(class='text-sm') Safety data sheet of the product, PDF only, size &lt; 1 MB
 
                 button(type='submit' class='formSubmitBtn')= isUpdating ? 'Save' : 'Create'
+                

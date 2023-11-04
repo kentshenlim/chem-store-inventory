@@ -3,13 +3,13 @@ extends layout
 block content
     section
         div(class='flex justify-between') 
-            a(href='/chemical/' + chemical._id class='text-link-color') &#128896; Back
+            a(href='javascript:history.back()' class='text-link-color') Back
 
-    section
+    section(class='border-b-0 dividerBottom')
         div
             if (chemicalProducts && chemicalProducts.length)
                 h3 Cannot Delete
-                p(class='indent') There are products under this chemical. Please delete these products first, or alternatively, modify their "Chemical" field.
+                p(class='indent') There are products under this chemical. Please modify or delete these products first.
                 ul(class='indent')
                     each product in chemicalProducts
                         li(class='list-disc list-inside')
@@ -17,12 +17,12 @@ block content
             else
                 h3 Delete
                 form(method='post' action='')
-                    p Are you sure you want to delete the chemical #[strong #{chemical.name}]? 
-                        span(class='text-warning-color') This cannot be undone!
+                    p(class='font-medium') Are you sure you want to delete the chemical "#{chemical.name}"? 
+                    p This item will be deleted immediately and permanently. You can't undo this action.
                     input(type='hidden' name='deleteId' value=chemical._id required=true)
                     div(class='cancelDeleteRow')
                         button(type='button')
-                            a(href='/chemical/' + chemical._id)  Cancel
+                            a(href='javascript:history.back()')  Cancel
                         button(type='submit') Delete
 
 

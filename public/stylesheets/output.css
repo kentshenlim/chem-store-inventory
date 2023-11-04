@@ -434,6 +434,10 @@ video {
   display: none;
 }
 
+* {
+  overflow-wrap: break-word;
+}
+
 section > div {
   padding: 1rem;
   padding-top: 0.5rem;
@@ -611,19 +615,16 @@ label:not(:first-child) {
 .clickableListItem {
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
-
-.clickableListItem:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-
-.clickableListItem {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.clickableListItem:nth-child(even) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
 .clickableListItem:not(:first-child) {
@@ -633,6 +634,10 @@ label:not(:first-child) {
 .clickableListItem>:not(:first-child) {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.clickableListItem:hover {
+  background-color: rgb(148 163 184 / 0.8);
 }
 
 .compulsoryField::after {
@@ -673,6 +678,8 @@ label:not(:first-child) {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
 .formSubmitBtn:active {
@@ -681,12 +688,16 @@ label:not(:first-child) {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.formSubmitBtn:hover {
+  background-color: rgb(148 163 184 / 0.8);
+}
+
 .deleteBtn {
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(163 163 163 / var(--tw-border-opacity));
-  background-color: rgb(226 232 240 / 0.6);
+  background-color: rgb(241 245 249 / 0.6);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.25rem;
@@ -724,12 +735,18 @@ label:not(:first-child) {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
 .cancelDeleteRow a:active {
   --tw-scale-x: .95;
   --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cancelDeleteRow a:hover {
+  background-color: rgb(148 163 184 / 0.8);
 }
 
 .cancelDeleteRow a {
@@ -753,6 +770,8 @@ label:not(:first-child) {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
 .cancelDeleteRow>button:not(:first-child):active {
@@ -761,12 +780,21 @@ label:not(:first-child) {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.cancelDeleteRow>button:not(:first-child):hover {
+  background-color: rgb(148 163 184 / 0.8);
+}
+
 .cancelDeleteRow>button:not(:first-child) {
   margin: 0px;
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.cancelDeleteRow:hover>button:not(:first-child) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .pointer-events-none {
@@ -910,6 +938,11 @@ label:not(:first-child) {
   white-space: nowrap;
 }
 
+.hyphens-auto {
+  -webkit-hyphens: auto;
+          hyphens: auto;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }
@@ -918,12 +951,12 @@ label:not(:first-child) {
   border-width: 1px;
 }
 
-.border-b-2 {
-  border-bottom-width: 2px;
-}
-
 .border-b-0 {
   border-bottom-width: 0px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
 }
 
 .border-transparent {
@@ -955,9 +988,9 @@ label:not(:first-child) {
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
-.bg-slate-300 {
+.bg-slate-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .bg-slate-50\/80 {
@@ -1032,6 +1065,10 @@ label:not(:first-child) {
   font-weight: 700;
 }
 
+.font-medium {
+  font-weight: 500;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -1059,9 +1096,19 @@ label:not(:first-child) {
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
+.text-slate-700 {
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity));
+}
+
 .text-slate-800 {
   --tw-text-opacity: 1;
   color: rgb(30 41 59 / var(--tw-text-opacity));
+}
+
+.text-slate-900 {
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1074,8 +1121,7 @@ label:not(:first-child) {
 }
 
 .bg-hover-color:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+  background-color: rgb(148 163 184 / 0.8);
 }
 
 .indent {
@@ -1120,6 +1166,25 @@ element), server side (express-validator) and DB-side (mongoose). For maxLength,
 better use server-sides; client-side bad UI (cannot enter more char).
 */
 
+.first-letter\:text-4xl::first-letter {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.first-letter\:uppercase::first-letter {
+  text-transform: uppercase;
+}
+
+.first-letter\:text-slate-500::first-letter {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+
+.odd\:bg-slate-200:nth-child(odd) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
 :is(.dark .dark\:block) {
   display: block;
 }
@@ -1130,10 +1195,6 @@ better use server-sides; client-side bad UI (cannot enter more char).
 
 .\[\&\:not\(\:first-child\)\]\:mt-2:not(:first-child) {
   margin-top: 0.5rem;
-}
-
-.\[\&\:not\(\:first-child\)\]\:mt-3:not(:first-child) {
-  margin-top: 0.75rem;
 }
 
 .\[\&\>\:not\(\:first-child\)\]\:px-2>:not(:first-child) {
@@ -1170,6 +1231,10 @@ better use server-sides; client-side bad UI (cannot enter more char).
 
 .\[\&_p\]\:text-center p {
   text-align: center;
+}
+
+.\[\&_p\]\:font-medium p {
+  font-weight: 500;
 }
 
 .\[\&\~\*\]\:indent~* {

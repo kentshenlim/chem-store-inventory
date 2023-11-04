@@ -3,20 +3,20 @@ extends layout
 block content
     section
         div(class='flex justify-between') 
-            a(href='/chemical' class='text-link-color') &#128896; List
             a(href='/' class='text-link-color') Home
-            a(href='/chemical/' + chemical._id + '/update' class='text-link-color') Edit &#128898;
+            a(href='/chemical' class='text-link-color') List
+            a(href='/chemical/' + chemical._id + '/update' class='text-link-color') Edit
     
-    section
+    section(class='dividerBottom')
         div
-            h3(class='[&~*]:indent') #{chemical.name}
+            h3(class='[&~*]:indent hyphens-auto') #{chemical.name}
             p Chemical formula: !{chemical.formulaFormatted}
-            p CAS no.: #{chemical.casNo}
+            p CAS number: #{chemical.casNo}
             p MW (g mol
                 sup -1
                 |): #{chemical.mW}
 
-    section
+    section(class='dividerBottom')
         div
             h3 Functional Groups
             if (chemical.groups.length) 
@@ -27,7 +27,7 @@ block content
             else
                 p This chemical does not possess any functional group in record.
 
-    section
+    section(class='dividerBottom')
         div
             h3 Products
             if (chemicalProducts && chemicalProducts.length)
@@ -38,7 +38,8 @@ block content
             else
                 p No product of this chemical exists in the record.
 
-    section 
+    section(class='border-b-0 dividerBottom')
         div(class='flex justify-end')
             a(href='/chemical/' + chemical._id + '/delete' class='inline-block text-warning-color')
-                button(type='button' class='deleteBtn') Delete
+                button(type='button' class='deleteBtn') Delete Chemical
+                

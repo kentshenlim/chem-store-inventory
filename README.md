@@ -23,7 +23,6 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: back button more intuitive than home and list, including error page
 - TODO: responsive
 - TODO: sidebar hidden at LHS at mobile, expand at wide screen
 - TODO: dark mode toggle
