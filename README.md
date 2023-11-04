@@ -23,7 +23,7 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: upload SDS, including retaining original one when editing, size limit
+- TODO: upload SDS, updating, clearing, including retaining original one when editing
 - TODO: back button more intuitive than home and list
 - TODO: error page too ugly
 - TODO: responsive

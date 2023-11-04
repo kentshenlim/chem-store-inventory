@@ -58,6 +58,8 @@ block content
                 input#sds(type='file' name='sds' class='inputText')
                 if (errors && errors.sds)
                     p(class='text-sm text-warning-color')!= errors.sds.msg
+                else if (errors && product.sds)
+                    p(class='text-sm text-warning-color') Please reupload SDS file
                 else
                     p(class='text-sm') Safety data sheet of the product, PDF only, size &lt; 1 MB
 

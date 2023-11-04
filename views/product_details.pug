@@ -35,9 +35,9 @@ block content
         div 
             h3 SDS
             if (!product.sds)
-                p(class='indent') No SDS uploaded
+                p(class='indent') No SDS has been uploaded
             else
-                a(href=`/product/${product._id}/sds` target='_blank' class='text-link-color indent') Link
+                a(href=`/product/${product._id}/sds` target='_blank' class='text-link-color indent') Link to SDS file
 
     section 
         div(class='flex justify-end')

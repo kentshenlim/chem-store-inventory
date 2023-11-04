@@ -24,7 +24,7 @@ const formValidatorFunctions = [
         if (!req.params.id) throw new Error('SKU is already in use'); // Create, must not exist
         // Otherwise, updating, will only accept if same document (click update
         // then save without changing)
-        if (req.params.id !== exist._id.toString()) throw new Error('SKU is already in use');
+        if (req.params.id !== exist._id.toString()) { throw new Error('SKU is already in use'); }
       }
     })
     .withMessage('The SKU already exists in the database; create a new one.')
@@ -55,6 +55,11 @@ const formValidatorFunctions = [
     .withMessage('Stock must have digits only')
     .isLength({ max: 15 })
     .withMessage('Stock cannot have more than 15 characters'),
+  body('sds', 'File type must be pdf') // Validator to check file type
+    .custom((_, { req }) => {
+      if (!req.file) return true; // Accept no file
+      return req.file.mimetype === 'application/pdf';
+    }),
 ];
 
 // Middlewares
@@ -105,12 +110,6 @@ module.exports = {
   create_post: [
     upload.single('sds'), // Multer must be used before validation to parse multipart form correctly
     ...formValidatorFunctions, // Multipart form has been parsed, can validate the body as usual
-    body('sds', 'File type must be pdf') // Extra validator to check file type
-      .custom((_, { req }) => {
-        if (!req.file) return true; // Accept no file
-        const { mimetype } = req.file;
-        return mimetype === 'application/pdf';
-      }),
     asyncHandler(async (req, res, next) => {
       const errors = validationResult(req);
       // Compulsory field first
