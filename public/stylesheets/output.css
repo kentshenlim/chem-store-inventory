@@ -984,6 +984,10 @@ label:not(:first-child) {
   text-align: right;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .indent-2 {
   text-indent: 0.5rem;
 }
