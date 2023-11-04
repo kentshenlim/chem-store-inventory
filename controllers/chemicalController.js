@@ -59,7 +59,7 @@ module.exports = {
   details_get: asyncHandler(async (req, res, next) => {
     const [chemical, chemicalProducts] = await Promise.all([
       Chemical.findById(req.params.id).populate('groups').exec(),
-      Product.find({ chemical: req.params.id }).exec(),
+      Product.find({ chemical: req.params.id }, { sku: 1 }).exec(),
     ]);
     if (!chemical) {
       const err = new Error('Chemical ID Not Found');
