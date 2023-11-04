@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  section
+  section(class='dividerBottom')
     div
       p Welcome to #{title}.
       p The inventory has the following record counts:
@@ -16,7 +16,7 @@ block content
           a(href='/group' class='text-link-color') #[Strong Functional groups]:
           |  !{groupCount}
 
-  section
+  section(class='dividerBottom')
     div
       h3 Quick Navigation
       ul(class='indent columns-2 [&>li]:break-inside-avoid [&_p]:text-center [&_img]:mx-auto')
@@ -45,7 +45,7 @@ block content
             img(src='/images/createProduct.png' alt='Icon for Create Product button')
             p Create Product
 
-  section
+  section(class='border-b-0 dividerBottom')
     div
       h3 New Product
       if (recentProducts && recentProducts.length)
