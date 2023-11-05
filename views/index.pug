@@ -19,28 +19,28 @@ block content
   section(class='dividerBottom')
     div
       h3 Quick Navigation
-      ul(class='indent [&>li]:break-inside-avoid [&_p]:text-center [&_p]:font-medium [&_img]:mx-auto text-slate-700 columns-2 xs:columns-3 lg:columns-6 max-w-lg md:max-w-xl lg:max-w-5xl [&_img]:pointer-events-none')
-        li(class='bg-red-300 navigatorButton bg-hover-color')
+      ul(class='indent [&>li]:break-inside-avoid [&_p]:text-center [&_p]:font-medium [&_img]:mx-auto text-slate-700 dark:text-slate-200 columns-2 xs:columns-3 lg:columns-6 max-w-lg md:max-w-xl lg:max-w-5xl [&_img]:pointer-events-none')
+        li(class='bg-red-300 dark:bg-red-500/60 navigatorButton bg-hover-color')
           a(href='/group')
             img(src='/images/allGroups.png', alt='Icon for All Groups button')
             p All Groups
-        li(class='bg-orange-300 navigatorButton bg-hover-color')
+        li(class='bg-orange-300 dark:bg-orange-500/50 navigatorButton bg-hover-color')
           a(href='/chemical')
             img(src='/images/allChemicals.png', alt='Icon for All Chemicals button')
             p All Chemicals
-        li(class='bg-yellow-300 navigatorButton bg-hover-color')
+        li(class='bg-yellow-300 dark:bg-yellow-500/80 navigatorButton bg-hover-color')
           a(href='/product')
             img(src='/images/allProducts.png', alt='Icon for All Products button')
             p All Products
-        li(class='bg-green-300 navigatorButton bg-hover-color')
+        li(class='bg-green-300 dark:bg-green-500/60 navigatorButton bg-hover-color')
           a(href='/group/create')
             img(src='/images/createGroup.png', alt='Icon for Create Group button')
             p Create Group
-        li(class='bg-blue-300 navigatorButton bg-hover-color')
+        li(class='bg-blue-300 dark:bg-blue-500/50 navigatorButton bg-hover-color')
           a(href='/chemical/create')
             img(src='/images/createChemical.png', alt='Icon for Create Chemical button')
             p Create Chemical
-        li(class='bg-violet-300 navigatorButton bg-hover-color')
+        li(class='bg-violet-300 dark:bg-violet-500/50 navigatorButton bg-hover-color')
           a(href='product/create')
             img(src='/images/createProduct.png' alt='Icon for Create Product button')
             p Create Product
@@ -51,7 +51,7 @@ block content
       if (recentProducts && recentProducts.length)
         ul(class='indent md:[&>li]:break-inside-avoid md:columns-2 lg:columns-3 max-w-6xl')
           each product in recentProducts
-            li(class='bg-slate-200 indent py-2 [&:not(:first-child)]:mt-2 rounded-md bg-hover-color relative [&:nth-child(n+6)]:hidden md:[&:nth-child(n+6):nth-child(-n+8)]:block lg:[&:nth-child(n+9)]:block')
+            li(class='bg-slate-200 dark:bg-gray-800 indent py-2 [&:not(:first-child)]:mt-2 rounded-md bg-hover-color relative [&:nth-child(n+6)]:hidden md:[&:nth-child(n+6):nth-child(-n+8)]:block lg:[&:nth-child(n+9)]:block')
               p(class='pl-2 font-semibold capitalize truncate') #{product.chemical.name}
               p(class='indent') SKU: #{product.sku}
               p(class='indent') Added #{product.addedAgo} ago

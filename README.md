@@ -23,5 +23,4 @@ Mobile-first inventory app written to practice DB manipulation.
 
 ## TODO
 
-- TODO: dark mode toggle
 - TODO: readme

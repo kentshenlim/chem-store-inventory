@@ -11,13 +11,14 @@ block content
             if (allGroups && allGroups.length)
                 ul
                 each group in allGroups
-                    li(class='list-none flex flex-col items-start border indent py-2 border-transparent border-b-slate-400 [&>:not(:first-child)]:px-2 odd:bg-slate-200')
+                    li(class='list-none flex flex-col items-start border indent py-2 border-transparent border-b-slate-400 [&>:not(:first-child)]:px-2 odd:bg-slate-200 dark:odd:bg-slate-600 dark:border-b-gray-500')
                         p(class='text-lg font-semibold capitalize') #{group.name}
                         p(class='line-clamp-3') #{group.description}
                         a(href='/group/' + group._id class='text-link-color') Inspect
                         if (group.wikiUrl)
                             a(href=group.wikiUrl target='_blank' class='inline-flex items-center self-end gap-1 text-right text-link-color')
-                                img(src='/images/externalLink.svg', alt="External link icon" class='inline')
+                                img(src='/images/external-link.svg', alt="External link icon" class='inline pointer-events-none dark:hidden')
+                                img(src='/images/external-link-white.svg', alt="External link icon" class='hidden pointer-events-none dark:inline')
                                 | #[em Wiki ]
             else 
                 p Oops, it seems like the record is empty. Please create one to add to it.
