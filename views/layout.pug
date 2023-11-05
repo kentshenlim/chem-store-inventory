@@ -6,33 +6,56 @@ html(class='text-slate-900 bg-slate-50/80')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     script(src='/javascripts/themeToggler.js' defer)
 
-  body(class='md:flex')
+  body(class='flex flex-col h-screen')
     //- Decorative shades of light
     div(class='absolute right-0 pointer-events-none select-none')
       img(src='/images/background-light.png', alt='Shades of light')
 
-    //- Side menu
-    div(class='flex-none hidden border-r-2 w-52 md:block')
-      h1 Test
-      
-    //- Main 
-    div(class='flex flex-col min-h-screen md:flex-grow md:flex-shrink [&>*]:w-full min-w-0')
-      section
-        div(class='flex justify-between')
-          h1(class='text-slate-800') ChemStore
-          button#dark-theme-toggler(class='dark:hidden')
-            img(src='/images/dark-theme.svg', alt="Dark theme icon")
-          button#light-theme-toggler(class='hidden dark:block')
-            img(src='/images/light-theme.svg', alt="light theme icon")
+    //- Title bar
+    section(class='flex-none border-b-2')
+      div(class='flex justify-between mx-auto max-w-screen-2xl')
+        h1(class='text-slate-800') ChemStore
+        button#dark-theme-toggler(class='dark:hidden')
+          img(src='/images/dark-theme.svg', alt="Dark theme icon")
+        button#light-theme-toggler(class='hidden dark:block')
+          img(src='/images/light-theme.svg', alt="light theme icon")
+            
+    //- Main content
+    div(class='flex items-start flex-grow flex-shrink w-full min-h-0 mx-auto max-w-screen-2xl')
+      //- Side menu
+      div(class='flex-none hidden w-52 md:block')
+        ul(class='[&>li]:mt-3 px-3')
+          li
+            a(href='/' class='text-link-color') Home
+          li
+            a(href='/group' class='text-link-color') All Groups
+          li
+            a(href='/chemical' class='text-link-color') All Chemicals
+          li
+            a(href='/product' class='text-link-color') All Products
+          li
+            hr
+          li
+            a(href='/group/create' class='text-link-color') Create Group
+          li
+            a(href='/chemical/create' class='text-link-color')  Create Chemical
+          li
+            a(href='/product/create' class='text-link-color') Create Product
 
-      section 
-        div
-          h2= title
+      //- App
+      div(class='flex flex-col md:flex-grow md:flex-shrink [&>*]:w-full min-w-0 md:border-l-2 self-stretch overflow-y-auto')
+        section 
+          div
+            h2= title
 
-      block content
+        block content
 
-      section(class='mt-auto') 
-        div(class='text-center bg-violet-300/80') 
-          a(href='https://github.com/kentshenlim/chem-store-inventory' target='_blank')
-            span(class='font-bold') &copy;
-            img(src='/images/github.svg', alt="GitHub icon" class='inline')
+        section(class='mt-auto') 
+          div(class='text-center bg-violet-300/80') 
+            a(href='https://github.com/kentshenlim/chem-store-inventory' target='_blank')
+              span(class='font-bold') &copy;
+              img(src='/images/github.svg', alt="GitHub icon" class='inline')
+
+      div
+        div(class='hidden w-52')
+          h1 hello
