@@ -6,27 +6,33 @@ html(class='text-slate-900 bg-slate-50/80')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     script(src='/javascripts/themeToggler.js' defer)
 
-  // Decorative shades of light
-  body(class='flex flex-col min-h-screen')
+  body(class='border border-blue-600 md:flex')
+    //- Decorative shades of light
     div(class='absolute right-0 pointer-events-none select-none')
       img(src='/images/background-light.png', alt='Shades of light')
-    
-    section
-      div(class='flex justify-between border-b-2')
-        h1(class='text-slate-800') ChemStore
-        button#dark-theme-toggler(class='dark:hidden')
-          img(src='/images/dark-theme.svg', alt="Dark theme icon")
-        button#light-theme-toggler(class='hidden dark:block')
-          img(src='/images/light-theme.svg', alt="light theme icon")
-        
-    section 
-      div
-        h2= title
 
-    block content
+    //- Side menu
+    div(class='flex-none hidden border border-red-700 w-52 md:block')
+      h1 Test
+      
+    //- Main 
+    div(class='flex flex-col flex-grow min-h-screen overflow-x-scroll')
+      section
+        div(class='flex justify-between border-b-2')
+          h1(class='text-slate-800') ChemStore
+          button#dark-theme-toggler(class='dark:hidden')
+            img(src='/images/dark-theme.svg', alt="Dark theme icon")
+          button#light-theme-toggler(class='hidden dark:block')
+            img(src='/images/light-theme.svg', alt="light theme icon")
 
-    section(class='mt-auto') 
-      div(class='text-center bg-violet-300/80') 
-        a(href='https://github.com/kentshenlim/chem-store-inventory' target='_blank')
-          span(class='font-bold') &copy;
-          img(src='/images/github.svg', alt="GitHub icon" class='inline')
+      section 
+        div
+          h2= title
+
+      block content
+
+      section(class='mt-auto') 
+        div(class='text-center bg-violet-300/80') 
+          a(href='https://github.com/kentshenlim/chem-store-inventory' target='_blank')
+            span(class='font-bold') &copy;
+            img(src='/images/github.svg', alt="GitHub icon" class='inline')
