@@ -893,6 +893,10 @@ label:not(:first-child) {
   width: 100vw;
 }
 
+.w-48 {
+  width: 12rem;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -1275,14 +1279,6 @@ better use server-sides; client-side bad UI (cannot enter more char).
     max-width: 36rem;
   }
 
-  .md\:flex-shrink {
-    flex-shrink: 1;
-  }
-
-  .md\:flex-grow {
-    flex-grow: 1;
-  }
-
   .md\:columns-2 {
     -moz-columns: 2;
          columns: 2;
@@ -1290,6 +1286,10 @@ better use server-sides; client-side bad UI (cannot enter more char).
 
   .md\:border-l-2 {
     border-left-width: 2px;
+  }
+
+  .md\:indent-0 {
+    text-indent: 0px;
   }
 }
 
