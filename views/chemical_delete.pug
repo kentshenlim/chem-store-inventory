@@ -3,7 +3,7 @@ extends layout
 block content
     section
         div(class='flex justify-between') 
-            a(href='javascript:history.back()' class='text-link-color') Back
+            a(class='text-link-color go-back') Back
 
     section(class='border-b-0 dividerBottom')
         div
@@ -22,7 +22,7 @@ block content
                     input(type='hidden' name='deleteId' value=chemical._id required=true)
                     div(class='cancelDeleteRow')
                         button(type='button')
-                            a(href='javascript:history.back()')  Cancel
+                            a(class='go-back')  Cancel
                         button(type='submit') Delete
 
 

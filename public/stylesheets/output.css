@@ -1261,6 +1261,10 @@ label:not(:first-child) {
   color: rgb(6 182 212 / var(--tw-text-opacity));
 }
 
+.text-link-color {
+  cursor: pointer;
+}
+
 .bg-hover-color {
   border-width: 1px;
 }

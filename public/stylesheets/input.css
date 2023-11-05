@@ -88,6 +88,7 @@
 @layer utilities {
   .text-link-color {
     @apply font-medium text-blue-500 dark:text-cyan-500;
+    @apply cursor-pointer;
   }
   .bg-hover-color {
     @apply border hover:bg-slate-400/80 hover:border-cyan-800;
