@@ -16,7 +16,7 @@ feel free to report any issue or suggestion
 
 ## Acknowledgement
 
-- All data used in this project were sourced from
+- All chemical data used in this project were sourced from
   [Sigma-Aldrich](https://www.sigmaaldrich.com), and the author does not claim
   ownership of any of the data. They are solely intended for demonstration
   purposes and are not used for any commercial gain.
@@ -35,5 +35,5 @@ feel free to report any issue or suggestion
 ## Features
 
 - Paginated result
-- PDF store in MongoDB (BSON, buffer)
+- PDF store in MongoDB (without gridFS)
 - Responsive
