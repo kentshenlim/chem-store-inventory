@@ -70,6 +70,10 @@
     @apply [&>button:not(:first-child)]:formSubmitBtn [&>button:not(:first-child)]:m-0 [&>button:not(:first-child)]:text-white [&>button:not(:first-child)]:bg-red-600;
     @apply [&>button:not(:first-child)]:hover:bg-red-500;
   }
+  /* Overwrite style conflict introduced due to using mult select */
+  .fixer {
+    @apply md:block !important;
+  }
 }
 
 @layer utilities {
