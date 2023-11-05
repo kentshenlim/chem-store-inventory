@@ -1,9 +1,10 @@
 # chem-store-inventory
 
-Mobile-first inventory app written to practice DB manipulation. Live demo here.
+Mobile-first inventory app written to practice DB manipulation. [Live demo
+here](https://chem-store-inventory-81e42484d2ae.herokuapp.com/).
 
 <p align="center">
-    <a href="https://www.google.com" target="_blank" rel="noreferrer">
+    <a href="https://chem-store-inventory-81e42484d2ae.herokuapp.com/" target="_blank" rel="noreferrer">
         <img src="./design/favicon.png" alt="Icon" width="175">
     </a>
 </p>
