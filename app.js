@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const compression = require('compression');
+const helmet = require('helmet');
 
 const debug = require('debug')('app');
 const mongoose = require('mongoose');
@@ -27,12 +29,25 @@ require('dotenv').config();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// response compression
+app.use(compression());
+
+// helmet
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      'script-src': ["'self'", 'cdn.jsdelivr.net'],
+    },
+  }),
+);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Rate limiter in respective router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/group', groupRouter);

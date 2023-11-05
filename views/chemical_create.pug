@@ -3,6 +3,7 @@ extends layout
 block content
     link(rel='stylesheet' href='https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css')
     script(src='https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js')
+    script(src='/javascripts/multSelect.js' defer)
 
     section 
         div(class='flex justify-between') 
@@ -53,6 +54,3 @@ block content
 
                 button(type='submit' class='formSubmitBtn')= isUpdating ? 'Save' : 'Create'
         
-
-    script.
-        new MultiSelectTag('groups')
