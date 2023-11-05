@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "devStart": "nodemon ./bin/www",
     "dev": "set DEBUG=chem-store-inventory:* & npm run devStart",
-    "style": "npx tailwindcss -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch"
+    "style": "npx tailwindcss -i ./input.css -o ./public/stylesheets/output.css --watch"
   },
   "dependencies": {
     "compression": "^1.7.4",
