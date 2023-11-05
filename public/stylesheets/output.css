@@ -817,18 +817,6 @@ label:not(:first-child) {
   right: 0px;
 }
 
-.order-1 {
-  order: 1;
-}
-
-.-order-first {
-  order: 9999;
-}
-
-.order-first {
-  order: -9999;
-}
-
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -872,76 +860,24 @@ label:not(:first-child) {
   display: none;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.h-44 {
-  height: 11rem;
-}
-
-.max-h-40 {
-  max-height: 10rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
-}
-
-.w-screen {
-  width: 100vw;
-}
-
-.w-16 {
-  width: 4rem;
-}
-
-.w-20 {
-  width: 5rem;
-}
-
-.w-36 {
-  width: 9rem;
-}
-
-.w-44 {
-  width: 11rem;
 }
 
 .w-52 {
   width: 13rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
-.w-\[100vw\] {
+.w-screen {
   width: 100vw;
 }
 
-.min-w-full {
-  min-width: 100%;
+.min-w-0 {
+  min-width: 0px;
 }
 
-.max-w-5xl {
-  max-width: 64rem;
-}
-
-.max-w-2xl {
-  max-width: 42rem;
-}
-
-.max-w-xl {
-  max-width: 36rem;
-}
-
-.max-w-md {
-  max-width: 28rem;
-}
-
-.max-w-sm {
-  max-width: 24rem;
+.max-w-6xl {
+  max-width: 72rem;
 }
 
 .max-w-lg {
@@ -950,10 +886,6 @@ label:not(:first-child) {
 
 .flex-none {
   flex: none;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .select-none {
@@ -977,11 +909,6 @@ label:not(:first-child) {
 .columns-2 {
   -moz-columns: 2;
        columns: 2;
-}
-
-.columns-auto {
-  -moz-columns: auto;
-       columns: auto;
 }
 
 .flex-col {
@@ -1021,16 +948,8 @@ label:not(:first-child) {
   align-self: flex-end;
 }
 
-.overflow-scroll {
-  overflow: scroll;
-}
-
 .overflow-x-auto {
   overflow-x: auto;
-}
-
-.overflow-x-scroll {
-  overflow-x: scroll;
 }
 
 .truncate {
@@ -1056,42 +975,12 @@ label:not(:first-child) {
   border-bottom-width: 0px;
 }
 
-.border-b-2 {
-  border-bottom-width: 2px;
-}
-
-.border-blue-800 {
-  --tw-border-opacity: 1;
-  border-color: rgb(30 64 175 / var(--tw-border-opacity));
-}
-
-.border-red-800 {
-  --tw-border-opacity: 1;
-  border-color: rgb(153 27 27 / var(--tw-border-opacity));
+.border-r-2 {
+  border-right-width: 2px;
 }
 
 .border-transparent {
   border-color: transparent;
-}
-
-.border-red-700 {
-  --tw-border-opacity: 1;
-  border-color: rgb(185 28 28 / var(--tw-border-opacity));
-}
-
-.border-red-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(220 38 38 / var(--tw-border-opacity));
-}
-
-.border-purple-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(147 51 234 / var(--tw-border-opacity));
-}
-
-.border-blue-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(37 99 235 / var(--tw-border-opacity));
 }
 
 .border-b-slate-400 {
@@ -1265,19 +1154,6 @@ label:not(:first-child) {
   color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
-.\[column-fill\:auto\] {
-  -moz-column-fill: auto;
-       column-fill: auto;
-}
-
-.\[scrollbar-gutter\:stable\] {
-  scrollbar-gutter: stable;
-}
-
-.\[scrollbar-gutter\:auto\] {
-  scrollbar-gutter: auto;
-}
-
 /* For multiple select tag from library */
 
 .mult-select-tag {
@@ -1337,59 +1213,10 @@ better use server-sides; client-side bad UI (cannot enter more char).
   display: none;
 }
 
-@media not all and (min-width: 768px) {
-  .max-md\:max-w-2xl {
-    max-width: 42rem;
-  }
-}
-
 @media (min-width: 430px) {
-  .xs\:max-w-3xl {
-    max-width: 48rem;
-  }
-
-  .xs\:max-w-xl {
-    max-width: 36rem;
-  }
-
-  .xs\:max-w-2xl {
-    max-width: 42rem;
-  }
-
-  .xs\:max-w-lg {
-    max-width: 32rem;
-  }
-
-  .xs\:max-w-md {
-    max-width: 28rem;
-  }
-
   .xs\:columns-3 {
     -moz-columns: 3;
          columns: 3;
-  }
-}
-
-@media (min-width: 640px) {
-  .sm\:max-w-3xl {
-    max-width: 48rem;
-  }
-
-  .sm\:max-w-5xl {
-    max-width: 64rem;
-  }
-
-  .sm\:max-w-2xl {
-    max-width: 42rem;
-  }
-
-  .sm\:max-w-xl {
-    max-width: 36rem;
-  }
-
-  .sm\:columns-6 {
-    -moz-columns: 6;
-         columns: 6;
   }
 }
 
@@ -1402,28 +1229,32 @@ better use server-sides; client-side bad UI (cannot enter more char).
     display: flex;
   }
 
-  .md\:max-w-5xl {
-    max-width: 64rem;
+  .md\:max-w-xl {
+    max-width: 36rem;
   }
 
-  .md\:max-w-2xl {
-    max-width: 42rem;
+  .md\:flex-shrink {
+    flex-shrink: 1;
   }
 
-  .md\:columns-6 {
-    -moz-columns: 6;
-         columns: 6;
+  .md\:flex-grow {
+    flex-grow: 1;
   }
 
-  .md\:columns-3 {
-    -moz-columns: 3;
-         columns: 3;
+  .md\:columns-2 {
+    -moz-columns: 2;
+         columns: 2;
   }
 }
 
 @media (min-width: 1024px) {
   .lg\:max-w-5xl {
     max-width: 64rem;
+  }
+
+  .lg\:columns-3 {
+    -moz-columns: 3;
+         columns: 3;
   }
 
   .lg\:columns-6 {
@@ -1434,6 +1265,26 @@ better use server-sides; client-side bad UI (cannot enter more char).
 
 .\[\&\:not\(\:first-child\)\]\:mt-2:not(:first-child) {
   margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .md\:\[\&\:nth-child\(n\+6\)\:nth-child\(-n\+8\)\]\:block:nth-child(n+6):nth-child(-n+8) {
+    display: block;
+  }
+}
+
+.\[\&\:nth-child\(n\+6\)\]\:hidden:nth-child(n+6) {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .lg\:\[\&\:nth-child\(n\+9\)\]\:block:nth-child(n+9) {
+    display: block;
+  }
+}
+
+.\[\&\>\*\]\:w-full>* {
+  width: 100%;
 }
 
 .\[\&\>\:not\(\:first-child\)\]\:px-2>:not(:first-child) {
@@ -1461,6 +1312,17 @@ better use server-sides; client-side bad UI (cannot enter more char).
 .\[\&\>li\]\:text-sm>li {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .md\:\[\&\>li\]\:break-inside-avoid>li {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+}
+
+.\[\&_img\]\:pointer-events-none img {
+  pointer-events: none;
 }
 
 .\[\&_img\]\:mx-auto img {

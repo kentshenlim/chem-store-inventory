@@ -8,7 +8,7 @@ exports.index = asyncHandler(async (req, res, next) => {
     Group.countDocuments().exec(),
     Chemical.countDocuments().exec(),
     Product.countDocuments().exec(),
-    Product.find({}, { chemical: 1, sku: 1, added: 1 }).sort({ added: -1 }).limit(5).populate('chemical')
+    Product.find({}, { chemical: 1, sku: 1, added: 1 }).sort({ added: -1 }).limit(12).populate('chemical')
       .exec(),
   ]);
   res.render('index', {

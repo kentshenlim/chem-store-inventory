@@ -19,7 +19,7 @@ block content
   section(class='dividerBottom')
     div
       h3 Quick Navigation
-      ul(class='indent [&>li]:break-inside-avoid [&_p]:text-center [&_p]:font-medium [&_img]:mx-auto text-slate-700 columns-2 xs:columns-3 lg:columns-6 max-w-lg md:max-w-2xl lg:max-w-5xl')
+      ul(class='indent [&>li]:break-inside-avoid [&_p]:text-center [&_p]:font-medium [&_img]:mx-auto text-slate-700 columns-2 xs:columns-3 lg:columns-6 max-w-lg md:max-w-xl lg:max-w-5xl [&_img]:pointer-events-none')
         li(class='bg-red-300 navigatorButton bg-hover-color')
           a(href='/group')
             img(src='/images/allGroups.png', alt='Icon for All Groups button')
@@ -49,9 +49,9 @@ block content
     div
       h3 New Product
       if (recentProducts && recentProducts.length)
-        ul(class='indent')
+        ul(class='indent md:[&>li]:break-inside-avoid md:columns-2 lg:columns-3 max-w-6xl')
           each product in recentProducts
-            li(class='bg-slate-200 indent py-2 [&:not(:first-child)]:mt-2 rounded-md bg-hover-color relative')
+            li(class='bg-slate-200 indent py-2 [&:not(:first-child)]:mt-2 rounded-md bg-hover-color relative [&:nth-child(n+6)]:hidden md:[&:nth-child(n+6):nth-child(-n+8)]:block lg:[&:nth-child(n+9)]:block')
               p(class='pl-2 font-semibold capitalize truncate') #{product.chemical.name}
               p(class='indent') SKU: #{product.sku}
               p(class='indent') Added #{product.addedAgo} ago
